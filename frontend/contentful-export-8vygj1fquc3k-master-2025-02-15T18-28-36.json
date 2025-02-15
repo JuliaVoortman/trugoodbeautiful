@@ -1,0 +1,1924 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "author",
+        "type": "ContentType",
+        "createdAt": "2025-02-14T22:41:35.502Z",
+        "updatedAt": "2025-02-15T14:20:29.705Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2025-02-15T14:20:29.705Z",
+        "firstPublishedAt": "2025-02-14T22:41:35.909Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 3,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/content_types/author"
+      },
+      "displayField": "name",
+      "name": "Tag",
+      "description": "",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "category",
+          "name": "Category",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "colour",
+          "name": "Colour",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "source",
+        "type": "ContentType",
+        "createdAt": "2025-02-15T13:56:50.537Z",
+        "updatedAt": "2025-02-15T13:56:51.029Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-02-15T13:56:51.029Z",
+        "firstPublishedAt": "2025-02-15T13:56:51.029Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/content_types/source"
+      },
+      "displayField": "name",
+      "name": "Source",
+      "description": "",
+      "fields": [
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "url",
+          "name": "URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "logo",
+          "name": "Logo",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "biasRating",
+          "name": "Bias rating",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "reliabilityScore",
+          "name": "Reliability score",
+          "type": "Integer",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "sentiment",
+        "type": "ContentType",
+        "createdAt": "2025-02-15T14:02:31.171Z",
+        "updatedAt": "2025-02-15T14:02:31.598Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-02-15T14:02:31.598Z",
+        "firstPublishedAt": "2025-02-15T14:02:31.598Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/content_types/sentiment"
+      },
+      "displayField": "title",
+      "name": "Sentiment",
+      "description": "",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "allSides",
+        "type": "ContentType",
+        "createdAt": "2025-02-15T14:16:08.780Z",
+        "updatedAt": "2025-02-15T14:16:09.178Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-02-15T14:16:09.178Z",
+        "firstPublishedAt": "2025-02-15T14:16:09.178Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/content_types/allSides"
+      },
+      "displayField": "title",
+      "name": "AllSides",
+      "description": "",
+      "fields": [
+        {
+          "id": "id",
+          "name": "ID",
+          "type": "Integer",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "range": {
+                "min": 1,
+                "max": 5
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "in": [
+                "Left",
+                "Lean Left",
+                "Center",
+                "Lean Right",
+                "Right"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "article",
+        "type": "ContentType",
+        "createdAt": "2025-02-15T18:26:23.103Z",
+        "updatedAt": "2025-02-15T18:26:23.659Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2025-02-15T18:26:23.659Z",
+        "firstPublishedAt": "2025-02-15T18:26:23.659Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/content_types/article"
+      },
+      "displayField": "pageName",
+      "name": "Article",
+      "description": "",
+      "fields": [
+        {
+          "id": "pageName",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": null,
+                "max": 50
+              },
+              "message": "Please limit the page title to under 50 characters."
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "originalUrl",
+          "name": "Original URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "summary",
+          "name": "Summary",
+          "type": "Text",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "fullText",
+          "name": "Full Text",
+          "type": "RichText",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline",
+                "code",
+                "superscript",
+                "subscript",
+                "strikethrough"
+              ],
+              "message": "Only bold, italic, underline, code, superscript, subscript, and strikethrough marks are allowed"
+            },
+            {
+              "enabledNodeTypes": [
+                "heading-1",
+                "heading-2",
+                "heading-3",
+                "heading-4",
+                "heading-5",
+                "heading-6",
+                "ordered-list",
+                "unordered-list",
+                "hr",
+                "blockquote",
+                "embedded-entry-block",
+                "embedded-asset-block",
+                "table",
+                "asset-hyperlink",
+                "embedded-entry-inline",
+                "entry-hyperlink",
+                "hyperlink"
+              ],
+              "message": "Only heading 1, heading 2, heading 3, heading 4, heading 5, heading 6, ordered list, unordered list, horizontal rule, quote, block entry, asset, table, link to asset, inline entry, link to entry, and link to Url nodes are allowed"
+            },
+            {
+              "nodes": {
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "image",
+          "name": "Image",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "sentimentType",
+          "name": "Sentiment type",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "sentiment"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
+          "id": "geographicLocation",
+          "name": "Geographic location",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "publicationDate",
+          "name": "Publication date",
+          "type": "Date",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "sourceOutlet",
+          "name": "Source outlet",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "source"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
+          "id": "allSidesBiasRating",
+          "name": "AllSides Bias Rating",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "allSides"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
+          "id": "tags",
+          "name": "Tags",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "author"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
+        }
+      ]
+    }
+  ],
+  "tags": [
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8vygj1fquc3k",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 6,
+        "createdAt": "2025-02-14T22:41:36.039Z",
+        "createdBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-02-15T14:20:30.476Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "author",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "category",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "colour",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8vygj1fquc3k",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-02-15T13:56:51.221Z",
+        "createdBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-02-15T13:56:51.674Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "source",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "url",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "logo",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "biasRating",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "reliabilityScore",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8vygj1fquc3k",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-02-15T14:02:31.739Z",
+        "createdBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-02-15T14:02:32.254Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "sentiment",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8vygj1fquc3k",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-02-15T14:16:09.361Z",
+        "createdBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-02-15T14:16:09.811Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "allSides",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "id",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "8vygj1fquc3k",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2025-02-15T18:26:23.885Z",
+        "createdBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2025-02-15T18:26:24.247Z",
+        "updatedBy": {
+          "sys": {
+            "id": "3xPPnTNAzh2IaLbmCHyRvK",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "article",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "sidebar": [
+        {
+          "settings": {
+          },
+          "widgetId": "publication-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "incoming-links-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "versions-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "settings": {
+          },
+          "widgetId": "content-preview-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "settings": {
+          },
+          "widgetId": "translation-widget",
+          "widgetNamespace": "sidebar-builtin"
+        }
+      ],
+      "controls": [
+        {
+          "fieldId": "pageName",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "originalUrl",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "summary",
+          "widgetId": "markdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "fullText",
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "image",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "sentimentType",
+          "settings": {
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": false
+          },
+          "widgetId": "entryCardEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "geographicLocation",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "publicationDate",
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "sourceOutlet",
+          "settings": {
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": false
+          },
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "allSidesBiasRating",
+          "settings": {
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": false
+          },
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "tags",
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "22eL3gGmxDGJYqXXiZZuO1",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:04:13.333Z",
+        "updatedAt": "2025-02-15T14:04:16.668Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:04:16.668Z",
+        "firstPublishedAt": "2025-02-15T14:04:16.668Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "sentiment"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/22eL3gGmxDGJYqXXiZZuO1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Positive"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "2forS3NVJGIj7kfyryrnEU",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:04:24.435Z",
+        "updatedAt": "2025-02-15T14:04:27.829Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:04:27.829Z",
+        "firstPublishedAt": "2025-02-15T14:04:27.829Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "sentiment"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/2forS3NVJGIj7kfyryrnEU"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Neutral"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "4PCaxjdbtzJ8lyANoZ8XhJ",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:04:31.360Z",
+        "updatedAt": "2025-02-15T14:04:35.909Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:04:35.909Z",
+        "firstPublishedAt": "2025-02-15T14:04:35.909Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "sentiment"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/4PCaxjdbtzJ8lyANoZ8XhJ"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Negative"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "3kMWfzXVd3ucM5lfvTTguO",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:16:15.398Z",
+        "updatedAt": "2025-02-15T14:16:22.744Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:16:22.744Z",
+        "firstPublishedAt": "2025-02-15T14:16:22.744Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "allSides"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/3kMWfzXVd3ucM5lfvTTguO"
+      },
+      "fields": {
+        "id": {
+          "en-US": 1
+        },
+        "title": {
+          "en-US": "Left"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "6e87OEfPE6bQjrk8CxcvyW",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:16:27.559Z",
+        "updatedAt": "2025-02-15T14:16:32.344Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:16:32.344Z",
+        "firstPublishedAt": "2025-02-15T14:16:32.344Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "allSides"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/6e87OEfPE6bQjrk8CxcvyW"
+      },
+      "fields": {
+        "id": {
+          "en-US": 2
+        },
+        "title": {
+          "en-US": "Lean Left"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "7se0O9FSp8xtGKACl7CvlY",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:16:35.918Z",
+        "updatedAt": "2025-02-15T14:16:40.410Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:16:40.410Z",
+        "firstPublishedAt": "2025-02-15T14:16:40.410Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "allSides"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/7se0O9FSp8xtGKACl7CvlY"
+      },
+      "fields": {
+        "id": {
+          "en-US": 3
+        },
+        "title": {
+          "en-US": "Center"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "1nZx2PGUe0PPCRoAEY3S6b",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:16:43.868Z",
+        "updatedAt": "2025-02-15T14:16:47.900Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2025-02-15T14:16:47.900Z",
+        "firstPublishedAt": "2025-02-15T14:16:47.900Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "allSides"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/1nZx2PGUe0PPCRoAEY3S6b"
+      },
+      "fields": {
+        "id": {
+          "en-US": 4
+        },
+        "title": {
+          "en-US": "Lean Right"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "3wMHA10oIh3e3QTbPhvefD",
+        "type": "Entry",
+        "createdAt": "2025-02-15T14:16:56.396Z",
+        "updatedAt": "2025-02-15T14:17:09.079Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2025-02-15T14:17:09.079Z",
+        "firstPublishedAt": "2025-02-15T14:17:02.360Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "allSides"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/3wMHA10oIh3e3QTbPhvefD"
+      },
+      "fields": {
+        "id": {
+          "en-US": 5
+        },
+        "title": {
+          "en-US": "Right"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "114RnNdJ4U5uCLRRBngzNC",
+        "type": "Entry",
+        "createdAt": "2025-02-15T17:54:28.507Z",
+        "updatedAt": "2025-02-15T17:55:35.933Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2025-02-15T17:55:35.933Z",
+        "firstPublishedAt": "2025-02-15T17:55:35.933Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "automationTags": [
+        ],
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "source"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/entries/114RnNdJ4U5uCLRRBngzNC"
+      },
+      "fields": {
+        "name": {
+          "en-US": "BBC"
+        },
+        "url": {
+          "en-US": "www.bbc.uk"
+        },
+        "logo": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "3bviPdwK3FUERaaYSmxXEe"
+            }
+          }
+        },
+        "biasRating": {
+          "en-US": "1"
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "4ynDE7luaG5OvxXePbjuks",
+        "type": "Asset",
+        "createdAt": "2025-02-15T17:53:19.068Z",
+        "updatedAt": "2025-02-15T17:53:47.266Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2025-02-15T17:53:47.266Z",
+        "firstPublishedAt": "2025-02-15T17:53:47.266Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/assets/4ynDE7luaG5OvxXePbjuks"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Background"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/8vygj1fquc3k/4ynDE7luaG5OvxXePbjuks/1358dff84dc251b774cdef60d3491ef3/vecteezy_ai-generated-nature-landscapes-background_36226096.jpg",
+            "details": {
+              "size": 1407454,
+              "image": {
+                "width": 4096,
+                "height": 2296
+              }
+            },
+            "fileName": "vecteezy_ai-generated-nature-landscapes-background_36226096.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ],
+        "concepts": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "id": "3bviPdwK3FUERaaYSmxXEe",
+        "type": "Asset",
+        "createdAt": "2025-02-15T17:54:56.698Z",
+        "updatedAt": "2025-02-15T17:55:16.906Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2025-02-15T17:55:16.906Z",
+        "firstPublishedAt": "2025-02-15T17:55:16.906Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "fieldStatus": {
+          "*": {
+            "en-US": "published"
+          }
+        },
+        "urn": "crn:contentful:::content:spaces/8vygj1fquc3k/environments/master/assets/3bviPdwK3FUERaaYSmxXEe"
+      },
+      "fields": {
+        "title": {
+          "en-US": "BBC logo"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/8vygj1fquc3k/3bviPdwK3FUERaaYSmxXEe/24a8ef1f591c3a789c74cc981d22e83f/p09xtmrn.jpg",
+            "details": {
+              "size": 10053,
+              "image": {
+                "width": 864,
+                "height": 486
+              }
+            },
+            "fileName": "p09xtmrn.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    }
+  ],
+  "locales": [
+    {
+      "name": "English (United States)",
+      "code": "en-US",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "5kkyxUXkD64lEOrrcbF0dq",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "8vygj1fquc3k"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "master",
+            "uuid": "28b2e024-caeb-422f-9821-469d768a485f"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "createdAt": "2018-11-05T11:27:21Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "3xPPnTNAzh2IaLbmCHyRvK"
+          }
+        },
+        "updatedAt": "2018-11-05T11:27:21Z"
+      }
+    }
+  ],
+  "webhooks": [
+  ],
+  "roles": [
+  ]
+}
