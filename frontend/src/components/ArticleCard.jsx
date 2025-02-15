@@ -7,7 +7,6 @@ const ArticleCard = ({ article }) => {
   // Extract fields from Contentful structure
   const {
     fields = {},
-    sys = {}
   } = article || {};
 
   const {
