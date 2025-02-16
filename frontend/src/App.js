@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from 'contentful';
 import ArticleDisplay from './components/ArticleDisplay';
-import FilterSystem from './components/FilterSystem';
-import ContinentsMap from './components/map/ContinentsMap';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -129,11 +127,6 @@ const FeaturedStory = ({ article }) => (
     </div>
   </div>
 );
-
-const formatDateNewspaperStyle = () => {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date().toLocaleDateString('en-US', options);
-};
 
 function App() {
   const [articles, setArticles] = useState([]);
