@@ -8,31 +8,23 @@ function ContinentsMap() {
     script.type = 'text/javascript';
     script.innerHTML = `
       $(document).ready(function(){
-
-    // CSSMap;
-    $("#map-continents").CSSMap({
-      "size": 430,
-      "mapStyle": "vintage",
-      "tooltips": "sticky",
-      "responsive": "auto",
-      "multipleClick": {
-        "enable": true,
-        "searchUrl": "search.php",
-        "searchLink": "",
-        "searchLinkVar": "region",
-        "separator": "+",
-        "hideSearchLink": true,
-        "clicksLimit": 0
-      },
-      "formSupport": {
-        "enable": true,
-        "inputId": "#demo-input",
-        "selectId": "#demo-select",
-        "selectLabel": "Location",
-        "value": "name"
-      }
-    });  
-  });
+// CSSMap;
+$("#map-continents").CSSMap({
+  "size": 750,
+  "mapStyle": "vintage",
+  "tooltips": "sticky",
+  "responsive": "auto",
+  "multipleClick": {
+    "enable": true,
+    "searchUrl": "search.php",
+    "searchLink": "Search",
+    "searchLinkVar": "region",
+    "separator": "+",
+    "hideSearchLink": false,
+    "clicksLimit": 0
+  }
+});
+});
     `;
 
     mapContainer.current.appendChild(script);
@@ -43,8 +35,8 @@ function ContinentsMap() {
   }, []);
 
   return (
-    <div id="map-continents" ref={mapContainer}>
-      <ul className="continents">
+   <div id="map-continents" ref={mapContainer}>
+    <div><ul className="continents">
         <li className="c1"><a href="#africa">Africa</a></li>
         <li className="c2"><a href="#asia">Asia</a></li>
         <li className="c3"><a href="#australia">Australia</a></li>
@@ -53,6 +45,7 @@ function ContinentsMap() {
         <li className="c6"><a href="#south-america">South America</a></li>
       </ul>
     </div>
+  </div>
   );
 }
 

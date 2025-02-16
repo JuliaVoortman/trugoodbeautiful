@@ -1,111 +1,234 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from 'contentful';
-import ArticleCard from './components/ArticleCard';
+import ArticleDisplay from './components/ArticleDisplay';
 import FilterSystem from './components/FilterSystem';
-import ContinentsMap from './components/map/ContinentsMap'; // Import ContinentsMap
+import ContinentsMap from './components/map/ContinentsMap';
+import Footer from './components/Footer';
 import './App.css';
 
 const client = createClient({
-  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+ space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+ accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 });
 
+const Navigation = () => (
+ <nav className="absolute top-0 right-0 p-6 z-10">
+   <ul className="flex space-x-8">
+     <li>
+       <a href="#articles" className="text-white hover:text-slate-300 font-medium transition-colors">
+         Articles
+       </a>
+     </li>
+     <li>
+       <a href="#about" className="text-white hover:text-slate-300 font-medium transition-colors">
+         About
+       </a>
+     </li>
+     <li>
+       <a href="#donate" className="text-white hover:text-slate-300 font-medium transition-colors">
+         Donate
+       </a>
+     </li>
+   </ul>
+ </nav>
+);
+
+const FeaturedStory = ({ article }) => (
+ <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 h-full max-h-72 flex flex-col">
+   <div className="p-6 flex-grow">
+     <div className="flex items-center gap-3 mb-4">
+       <span className="px-3 py-1 text-sm bg-slate-100 text-slate-600 rounded-full">
+         {article.fields?.allSidesBiasRating?.fields?.title || 'Center'}
+       </span>
+       <span className="text-emerald-600 text-sm font-medium flex items-center">
+         <span className="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>
+         {article.fields?.sentimentType?.fields?.title || 'Positive'}
+       </span>
+     </div>
+
+     <h2 className="text-xl font-semibold text-slate-800 mb-3 leading-tight">
+       Featured Story
+     </h2>
+
+     <h3 className="text-lg font-medium text-slate-700 mb-2">
+       {article.fields?.pageName}
+     </h3>
+
+     <p className="text-slate-600 mb-4 line-clamp-3 flex-grow">
+       {article.fields?.summary}
+     </p>
+
+     {article.fields?.image?.fields?.file?.url && (
+       <img 
+         src={`https:${article.fields.image.fields.file.url}`}
+         alt={article.fields.image.fields.title || article.fields.pageName}
+         className="w-full h-32 object-cover mb-4 rounded-lg"
+       />
+     )}
+
+     <div className="flex flex-wrap gap-2">
+       {article.fields?.sourceOutlet?.fields?.title && (
+         <span className="px-3 py-1 text-sm bg-slate-50 text-slate-600 rounded-full">
+           {article.fields.sourceOutlet.fields.title}
+         </span>
+       )}
+       <span className="px-3 py-1 text-sm bg-slate-50 text-slate-600 rounded-full">
+         {article.fields?.geographicLocation || 'Location unknown'}
+       </span>
+     </div>
+   </div>
+ </div>
+);
+
 function App() {
-  const [articles, setArticles] = useState([]);
-  const [filteredArticles, setFilteredArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedSentiment, setSelectedSentiment] = useState('all');
+ const [articles, setArticles] = useState([]);
+ const [loading, setLoading] = useState(true);
+ const [error, setError] = useState(null);
+ const [selectedSentiment, setSelectedSentiment] = useState('positive');
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await client.getEntries({
-          content_type: 'article',
-          include: 2,
-        });
+ const sentiments = [
+   { id: 'positive', label: 'The good stuff', color: 'bg-emerald-500' },
+   { id: 'negative', label: 'The sad stuff', color: 'bg-amber-500' },
+   { id: 'neutral', label: 'All the rest', color: 'bg-blue-500' }
+ ];
 
-        const articleData = response.items.map((item) => ({
-          ...item,
-          coordinates: [
-            parseFloat(item.fields.geographicLocation.split(", ")[1]), //longitude
-            parseFloat(item.fields.geographicLocation.split(", ")[0]), //latitude
-          ],
-          sentiment: item.fields.sentimentType.fields.title,
-        }));
+ const filteredArticles = selectedSentiment === 'all' 
+   ? articles
+   : articles?.filter(article => 
+       article.sentimentType?.title.toLowerCase() === selectedSentiment
+     );
 
-        setArticles(articleData);
-        setFilteredArticles(articleData);
-        setLoading(false);
-      } catch (err) {
-        console.error('Error fetching articles:', err);
-        setError(err.message);
-        setLoading(false);
-      }
-    };
+ useEffect(() => {
+   const fetchArticles = async () => {
+     try {
+       console.log('Fetching articles...');
+       console.log('Space ID:', process.env.REACT_APP_CONTENTFUL_SPACE_ID);
+       console.log('Access Token exists:', !!process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN);
+       
+       const response = await client.getEntries({
+         content_type: 'article',
+         include: 2,
+       });
 
-    fetchArticles();
-  }, []);
+       console.log('Raw Contentful response:', response.items[0]);
+       
+       const articleData = response.items.map((item) => ({
+         ...item,
+         coordinates: item.fields.geographicLocation ? [
+           parseFloat(item.fields.geographicLocation.split(", ")[1]),
+           parseFloat(item.fields.geographicLocation.split(", ")[0]),
+         ] : null,
+         sentimentType: item.fields.sentimentType?.fields || { title: 'neutral' }
+       }));
 
-  const handleRegionSelect = (region) => {
-    setFilteredArticles(
-      articles.filter(article => 
-        article.fields.geographicLocation === region
-      )
-    );
-  };
+       console.log('Processed article data:', articleData);
+       
+       setArticles(articleData);
+       setLoading(false);
+     } catch (err) {
+       console.error('Error fetching articles:', err);
+       console.error('Error details:', err.message);
+       setError(err.message);
+       setLoading(false);
+     }
+   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="text-xl text-slate-600">Loading stories of progress...</div>
-      </div>
-    );
-  }
+   fetchArticles();
+ }, []);
 
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="text-xl text-red-600">Error: {error}</div>
-      </div>
-    );
-  }
+ if (loading) {
+   return (
+     <div className="min-h-screen flex items-center justify-center bg-stone-100">
+       <div className="text-xl text-slate-300">Loading stories of progress...</div>
+     </div>
+   );
+ }
 
-  return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <div className="max-w-7xl mx-auto">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-serif text-slate-800 mb-2">TruGoodBeautiful</h1>
-          <p className="text-slate-600">Illuminating Progress, Celebrating Solutions</p>
-        </header>
+ if (error) {
+   return (
+     <div className="min-h-screen flex items-center justify-center bg-stone-100">
+       <div className="text-xl text-red-400">Error: {error}</div>
+     </div>
+   );
+ }
 
-        <ContinentsMap /> {/* Render ContinentsMap component */}
-        
-        <FilterSystem 
-          articles={articles} 
-          onFilterChange={setFilteredArticles} 
-        />
+ return (
+   <div className="flex flex-col min-h-screen">
+     {/* Hero Section */}
+     <div className="relative h-[30vh] overflow-hidden">
+       <div 
+         className="absolute inset-0 bg-cover bg-center"
+         style={{ 
+           backgroundImage: `
+             url(/pastoral-landscape.jpg)`,
+         }}
+       />
+       
+       <Navigation />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredArticles.map((article) => (
-            <ArticleCard key={article.sys.id} article={article} />
-          ))}
-        </div>
+       <div className="relative z-10 h-full flex items-center justify-center text-center">
+         <div>
+           <h1 className="text-4xl font-serif text-white mb-2 drop-shadow-lg">
+             TruGoodBeautiful
+           </h1>
+           <p className="text-lg text-white drop-shadow">
+             Illuminating Progress, Celebrating Solutions
+           </p>
+         </div>
+       </div>
+     </div>
 
-        {filteredArticles.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-slate-600">No stories found for the selected filters.</p>
-            <button 
-              onClick={() => setFilteredArticles(articles)}
-              className="mt-4 px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors duration-300"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+     {/* Single Content Background Section */}
+     <div className="flex-grow">
+       <div className="max-w-7xl mx-auto px-0">
+         {/* Sentiment Filter Tabs */}
+         <div className="flex justify-start space-x-4 py-4 border-b border-slate-300">
+           {sentiments.map((sentiment) => (
+             <button
+               key={sentiment.id}
+               onClick={() => setSelectedSentiment(sentiment.id)}
+               className={`px-6 py-3 rounded transition-all duration-300 font-medium
+                 ${selectedSentiment === sentiment.id
+                   ? `${sentiment.color} text-white shadow-md`
+                   : 'bg-white text-slate-600 hover:bg-slate-50'
+                 }`}
+             >
+               {sentiment.label}
+             </button>
+           ))}
+         </div>
+         {/* Featured Story and Map Section */}
+         <div className="pt-4 mb-6">
+           <div className="flex flex-col lg:flex-row gap-6">
+             <div className="lg:w-1/2">
+               {articles[0] && <FeaturedStory article={articles[0]} />}
+             </div>
+             
+             <div className="lg:w-1/2 flex flex-col gap-4">
+               <div className="flex-grow">
+                 <ContinentsMap />
+               </div>
+                {/* Filter System */}
+                <div className="pt-6 mb-6">
+                  <div className="bg-slate-50 p-4 rounded-lg">
+                    <FilterSystem 
+                      articles={articles}
+                      onFilterChange={(filtered) => setArticles(filtered)}
+                    />
+                  </div>
+                </div>
+             </div>
+           </div>
+         </div>
+         {/* Articles Section */}
+         <div>
+           <ArticleDisplay articles={filteredArticles} />
+         </div>
+       </div>
+     </div>
+     <Footer />
+   </div>
+ );
 }
 
 export default App;
