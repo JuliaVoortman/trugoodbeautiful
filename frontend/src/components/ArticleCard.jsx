@@ -2,14 +2,14 @@ const ArticleCard = ({ article }) => {
   console.log('Article data in card:', article);
   
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+    <div className="bg-stone-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-4">
-          <span className="px-3 py-1 text-sm bg-slate-100 text-slate-600 rounded-full">
+          <span className="px-3 py-1 text-sm bg-stone-50 text-slate-600 rounded-full">
             {article.fields?.allSidesBiasRating?.fields?.title || 'Center'}
           </span>
           <span className="text-emerald-600 text-sm font-medium flex items-center">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span>
+            <span className="w-2 h-2 rounded-full bg-green-600 mr-2"></span>
             {article.fields?.sentimentType?.fields?.title || 'Positive'}
           </span>
         </div>
@@ -30,16 +30,24 @@ const ArticleCard = ({ article }) => {
           />
         )}
 
-        <div className="flex flex-wrap gap-2 mt-4">
-          {article.fields?.sourceOutlet?.fields?.title && (
-            <span className="px-3 py-1 text-sm bg-slate-50 text-slate-600 rounded-full">
-              {article.fields.sourceOutlet.fields.title}
-            </span>
-          )}
-          <span className="px-3 py-1 text-sm bg-slate-50 text-slate-600 rounded-full">
-            {article.fields?.geographicLocation || 'Location unknown'}
-          </span>
-        </div>
+<div className="flex flex-wrap gap-2 mt-4">
+  {article.fields?.sourceOutlet?.fields && (
+    <span className="px-3 py-1 text-sm bg-stone-50 text-slate-600 rounded-full flex items-center gap-2">
+      {article.fields.sourceOutlet.fields.logo?.fields?.file?.url && (
+        <img 
+          src={`https:${article.fields.sourceOutlet.fields.logo.fields.file.url}`}
+          alt={article.fields.sourceOutlet.fields.name}
+          className="h-4 w-auto object-contain"
+        />
+      )}
+      {article.fields.sourceOutlet.fields.name}
+    </span>
+  )}
+  <span className="px-3 py-1 text-sm bg-blue-900 text-white rounded-full">
+    {article.fields?.geographicLocation || 'Location unknown'}
+  </span>
+</div>
+
       </div>
     </div>
   );
