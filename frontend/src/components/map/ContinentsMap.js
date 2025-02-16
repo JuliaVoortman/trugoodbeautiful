@@ -11,10 +11,9 @@ function ContinentsMap() {
       // CSSMap;
       $("#map-continents").CSSMap({
         "size": 750,
-        "mapStyle": "vintage",
+       "mapStyle": "blue",
   "tooltips": "visible",
   "responsive": {},
-  "mobileSupport": true,
   "multipleClick": {
     "enable": true,
     "searchUrl": "search.php",

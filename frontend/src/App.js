@@ -11,32 +11,71 @@ const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 });
 
-const Navigation = () => (
-  <nav className="absolute bottom-0 right-0 p-6 z-10">
-    <ul className="flex space-x-8">
-      <li>
-        <a href="#articles" className="text-white hover:text-slate-300 font-medium transition-colors">
-          Articles
-        </a>
-      </li>
-      <li>
-        <a href="#howitworks" className="text-white hover:text-slate-300 font-medium transition-colors">
-          How it works
-        </a>
-      </li>
-      <li>
-        <a href="#donate" className="text-white hover:text-slate-300 font-medium transition-colors">
-          Sponsors
-        </a>
-      </li>
-      <li>
-        <a href="#donate" className="text-white hover:text-slate-300 font-medium transition-colors">
-          Donate
-        </a>
-      </li>
-    </ul>
-  </nav>
-);
+const Navigation = () => {
+  const [activeHash, setActiveHash] = useState(window.location.hash || '#articles');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash || '#articles');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  return (
+    <nav className="absolute top-0 left-0 right-0 bg-slate-900/50 backdrop-blur-sm z-10 shadow-lg shadow-slate-900/20">
+      <div className="max-w-7xl pr-4 py-4">
+        <ul className="flex justify-end space-x-8">
+          <li className="relative">
+            <a 
+              href="#articles" 
+              className="text-white hover:text-slate-300 font-medium transition-colors underline"
+            >
+              Articles
+              {activeHash === '#articles' && (
+                <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
+              )}
+            </a>
+          </li>
+          <li className="relative">
+            <a 
+              href="#howitworks" 
+              className="text-white hover:text-slate-300 font-medium transition-colors underline"
+            >
+              How it works
+              {activeHash === '#howitworks' && (
+                <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
+              )}
+            </a>
+          </li>
+          <li className="relative">
+            <a 
+              href="#sponsors" 
+              className="text-white hover:text-slate-300 font-medium transition-colors underline"
+            >
+              Sponsors
+              {activeHash === '#sponsors' && (
+                <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
+              )}
+            </a>
+          </li>
+          <li className="relative">
+            <a 
+              href="#donate" 
+              className="text-white hover:text-slate-300 font-medium transition-colors underline"
+            >
+              Donate
+              {activeHash === '#donate' && (
+                <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
+              )}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 const FeaturedStory = ({ article }) => (
   <div> 
@@ -57,7 +96,7 @@ const FeaturedStory = ({ article }) => (
           {article.fields?.pageName}
         </h3>
 
-        <p className="text-slate-600 mb-4 line-clamp-3 flex-grow">
+        <p className="text-slate-600 mb-4 line-clamp-2 flex-grow">
           {article.fields?.summary}
         </p>
 
@@ -90,6 +129,11 @@ const FeaturedStory = ({ article }) => (
     </div>
   </div>
 );
+
+const formatDateNewspaperStyle = () => {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date().toLocaleDateString('en-US', options);
+};
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -157,6 +201,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Navigation />
       <div className="relative h-60 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-bottom"
@@ -165,15 +210,14 @@ function App() {
             filter: 'brightness(0.4)'
           }}
         />
-        
-        <Navigation />
+      
 
-        <div className="relative z-10 h-full flex justify-left m-10 pl-7">
+        <div className="relative z-10 h-full flex justify-left pl-12 pt-20">
           <div>
             <img 
               src="/logo.svg" 
               alt="TruGoodBeautiful Logo" 
-              className="h-24 mx-auto filter drop-shadow-lg"
+              className="h-20 mx-auto filter drop-shadow-lg"
             />
             <p className="text-lg text-white drop-shadow m-2">
               Finding light in the headlines
@@ -183,8 +227,8 @@ function App() {
       </div>
 
       <div className="flex-grow">
-        <div className="max-w-7xl mx-auto px-0">
-          <div className="-mt-10 flex justify-start gap-4 py-4 border-b border-slate-300 pl-4">
+        <div className="m-6 px-0">
+          <div className="-mt-16 flex justify-start gap-4 py-4 border-b border-slate-300 pl-4">
             {sentiments.map((sentiment) => (
               <button
                 key={sentiment.id}
@@ -200,22 +244,15 @@ function App() {
                 </span>
               </button>
             ))}
+            
           </div>
-
-          <div className="pt-4 mb-10">
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-6/12">
-                {articles[0] && <FeaturedStory article={articles[0]} />}
-              </div>
-              
-              <div className="lg:w-6/12 flex flex-col">
-                <div className="flex-grow">
-                  <ContinentsMap />
-                </div>
-              </div>
-            </div>
-          </div>
-
+                  
+          <div className="pt-4 pb-4">
+    {/* Featured Story Column */}
+    <div className="flex-grow">
+      {articles[0] && <FeaturedStory article={articles[0]} />}
+  </div>
+</div>
           <div>
             <ArticleDisplay articles={filteredArticles} />
           </div>
