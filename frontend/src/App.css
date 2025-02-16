@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}

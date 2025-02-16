@@ -7,24 +7,30 @@ function ContinentsMap() {
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.innerHTML = `
-      $(document).ready(function(){
-// CSSMap;
-$("#map-continents").CSSMap({
-  "size": 750,
-  "mapStyle": "vintage",
-  "tooltips": "sticky",
-  "responsive": "auto",
-  "multipleClick": {
-    "enable": true,
-    "searchUrl": "search.php",
-    "searchLink": "Search",
-    "searchLinkVar": "region",
-    "separator": "+",
-    "hideSearchLink": false,
-    "clicksLimit": 0
-  }
-});
-});
+     $(document).ready(function(){
+      // CSSMap;
+      $("#map-continents").CSSMap({
+        "size": 750,
+        "tooltips": "visible",
+        "responsive": "auto",
+        "visibleList": {
+          "enable": true,
+          "listPosition": "bottom",
+          "columns": 2,
+          "columnsGap": 20,
+          "columnWidth": 100,
+        },
+        "multipleClick": {
+        "enable": true,
+        "searchUrl": "search.php",
+        "searchLink": "",
+        "searchLinkVar": "region",
+        "separator": "+",
+        "hideSearchLink": true,
+        "clicksLimit": 0
+      }
+      });
+  });
     `;
 
     mapContainer.current.appendChild(script);

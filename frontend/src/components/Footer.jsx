@@ -1,9 +1,9 @@
-import React from 'react';
-
-const Footer = () => (
-  <footer className="bg-slate-800 text-white py-4 text-center">
-    <p>We run on Contentful <span role="img" aria-label="heart">❤️</span></p>
-  </footer>
-);
-
-export default Footer;
+const Footer = ({ className }) => (
+    <footer className="w-full bg-slate-900 py-4">
+        <div className="max-w-7xl mx-auto px-4 text-center text-white">
+          We run on Contentful ❤️
+        </div>
+      </footer>
+  );
+  
+  export default Footer;

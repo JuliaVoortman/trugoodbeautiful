@@ -10,27 +10,26 @@ const client = createClient({
  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
  accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 });
-
 const Navigation = () => (
- <nav className="absolute top-0 right-0 p-6 z-10">
-   <ul className="flex space-x-8">
-     <li>
-       <a href="#articles" className="text-white hover:text-slate-300 font-medium transition-colors">
-         Articles
-       </a>
-     </li>
-     <li>
-       <a href="#about" className="text-white hover:text-slate-300 font-medium transition-colors">
-         About
-       </a>
-     </li>
-     <li>
-       <a href="#donate" className="text-white hover:text-slate-300 font-medium transition-colors">
-         Donate
-       </a>
-     </li>
-   </ul>
- </nav>
+  <nav className="absolute bottom-0 right-0 p-6 z-10">
+    <ul className="flex space-x-8">
+      <li>
+        <a href="#articles" className="text-white hover:text-slate-300 font-medium transition-colors">
+          Articles
+        </a>
+      </li>
+      <li>
+        <a href="#about" className="text-white hover:text-slate-300 font-medium transition-colors">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#donate" className="text-white hover:text-slate-300 font-medium transition-colors">
+          Donate
+        </a>
+      </li>
+    </ul>
+  </nav>
 );
 
 const FeaturedStory = ({ article }) => (
@@ -155,7 +154,7 @@ function App() {
  return (
    <div className="flex flex-col min-h-screen">
      {/* Hero Section */}
-     <div className="relative h-[30vh] overflow-hidden">
+     <div className="relative">
        <div 
          className="absolute inset-0 bg-cover bg-center"
          style={{ 
@@ -166,23 +165,25 @@ function App() {
        
        <Navigation />
 
-       <div className="relative z-10 h-full flex items-center justify-center text-center">
-         <div>
-           <h1 className="text-4xl font-serif text-white mb-2 drop-shadow-lg">
-             TruGoodBeautiful
-           </h1>
-           <p className="text-lg text-white drop-shadow">
-             Illuminating Progress, Celebrating Solutions
-           </p>
-         </div>
-       </div>
+       <div className="relative z-10 h-full flex justify-left m-10 pl-10">
+  <div>
+    <img 
+      src="/logo.svg" 
+      alt="TruGoodBeautiful Logo" 
+      className="h-24 mx-auto filter drop-shadow-lg" // Adjust height (h-16) as needed
+    />
+    <p className="text-lg text-white drop-shadow m-2">
+    Finding light in the headlines
+    </p>
+  </div>
+</div>
      </div>
 
      {/* Single Content Background Section */}
      <div className="flex-grow">
        <div className="max-w-7xl mx-auto px-0">
          {/* Sentiment Filter Tabs */}
-         <div className="flex justify-start space-x-4 py-4 border-b border-slate-300">
+         <div className="-mt-10 flex justify-start space-x-4 py-4 border-b border-slate-300 pl-4">
            {sentiments.map((sentiment) => (
              <button
                key={sentiment.id}
@@ -198,30 +199,21 @@ function App() {
            ))}
          </div>
          {/* Featured Story and Map Section */}
-         <div className="pt-4 mb-6">
+         <div className="pt-4 mb-10">
            <div className="flex flex-col lg:flex-row gap-6">
-             <div className="lg:w-1/2">
+             <div className="lg:w-2/3">
                {articles[0] && <FeaturedStory article={articles[0]} />}
              </div>
              
-             <div className="lg:w-1/2 flex flex-col gap-4">
+             <div className="lg:w-1/3 flex flex-col">
                <div className="flex-grow">
                  <ContinentsMap />
                </div>
-                {/* Filter System */}
-                <div className="pt-6 mb-6">
-                  <div className="bg-slate-50 p-4 rounded-lg">
-                    <FilterSystem 
-                      articles={articles}
-                      onFilterChange={(filtered) => setArticles(filtered)}
-                    />
-                  </div>
-                </div>
              </div>
            </div>
          </div>
          {/* Articles Section */}
-         <div>
+         <div className="pt-12 mb-6">
            <ArticleDisplay articles={filteredArticles} />
          </div>
        </div>
