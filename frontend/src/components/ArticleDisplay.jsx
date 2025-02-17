@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ArticleCard from './ArticleCard';
 import FeaturedStory from './FeaturedStory';
 
@@ -18,8 +18,8 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     });
   }))].sort((a, b) => new Date(b) - new Date(a));
 
-  // Filter articles by selected date
-  const filterArticlesByDate = (articlesToFilter) => {
+  // Filter articles by selected date - memoized with useCallback
+  const filterArticlesByDate = useCallback((articlesToFilter) => {
     if (selectedDate === 'all') return articlesToFilter;
     
     return articlesToFilter.filter(article => {
@@ -31,7 +31,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
       });
       return formattedDate === selectedDate;
     });
-  };
+  }, [selectedDate]);
 
   // Set featured article and initial articles when articles array or date filter changes
   useEffect(() => {
@@ -53,7 +53,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
       setFeaturedArticle(null);
       setDisplayedArticles([]);
     }
-  }, [articles, selectedDate]);
+  }, [articles, selectedDate, filterArticlesByDate]);
 
   // Update displayed articles when count changes
   useEffect(() => {
@@ -61,19 +61,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
       const filteredArticles = filterArticlesByDate(articles);
       setDisplayedArticles(filteredArticles.slice(1, displayCount + 1));
     }
-  }, [displayCount, articles, selectedDate]);
-
-  // Debug logging
-  useEffect(() => {
-    console.log('ArticleDisplay State:', {
-      selectedSentiment,
-      selectedDate,
-      featuredArticle: featuredArticle?.fields?.pageName,
-      totalArticles: articles?.length,
-      displayedCount: displayedArticles?.length,
-      hasMore: articles?.length > (displayCount + 1)
-    });
-  }, [articles, displayCount, displayedArticles, featuredArticle, selectedSentiment, selectedDate]);
+  }, [displayCount, articles, filterArticlesByDate]);
 
   const hasMore = filterArticlesByDate(articles)?.length > (displayCount + 1);
 

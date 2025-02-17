@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   const navItems = [
@@ -10,30 +10,29 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="absolute top-0 left-0 right-0 bg-slate-900/50 backdrop-blur-sm z-50 shadow-lg shadow-slate-900/20">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+    <nav className="absolute top-0 left-0 right-0 bg-slate-900/50 backdrop-blur-sm z-50">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex justify-end space-x-8">
           {navItems.map(({ path, label, exact }) => (
-            <Link 
+            <NavLink 
               key={path}
               to={path}
               end={exact}
               className={({ isActive }) => `
-                relative z-50
-                !text-white hover:!text-slate-200 
-                transition-colors underline 
-                cursor-pointer py-2 px-1
+                relative !text-white hover:!text-slate-200 
+                transition-colors underline cursor-pointer 
+                py-1 px-1 ${isActive ? 'font-medium' : ''}
               `}
             >
               {({ isActive }) => (
-                <>
+                <div className="relative">
                   {label}
                   {isActive && (
-                    <span className="absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
+                    <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
                   )}
-                </>
+                </div>
               )}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
