@@ -7,7 +7,7 @@ const Shop = () => {
       name: "TruGoodBeautiful T-Shirt",
       price: 29.99,
       description: "A comfortable, eco-friendly t-shirt featuring our logo and message of hope.",
-      image: "https://placehold.co/600x400/e2e8f0/64748b?text=T-Shirt",
+      image: "/t-shirt-shop.png",
       details: [
         "100% organic cotton",
         "Available in sizes S-XXL",
@@ -17,31 +17,31 @@ const Shop = () => {
     },
     {
       id: 2,
-      name: "Hope Journal",
-      price: 24.99,
-      description: "A beautifully designed journal to document your daily moments of inspiration and gratitude.",
-      image: "https://placehold.co/600x400/e2e8f0/64748b?text=Journal",
+      name: "Long Sleeve Shirt",
+      price: 34.99,
+      description: "A cozy long-sleeve shirt perfect for spreading positivity in cooler weather.",
+      image: "/long-sleeve-shop.png",
       details: [
-        "120 pages of premium paper",
-        "Hardcover with ribbon bookmark",
-        "Includes gratitude prompts",
-        "Made from recycled materials"
+        "100% organic cotton",
+        "Available in sizes S-XXL",
+        "Sustainable manufacturing",
+        "Ships within 2-3 business days"
       ]
     },
     {
       id: 3,
-      name: "Digital Subscription",
-      price: 9.99,
-      description: "Get exclusive access to our premium content, early articles, and special features.",
-      image: "https://placehold.co/600x400/e2e8f0/64748b?text=Digital",
+      name: "Canvas Tote Bag",
+      price: 24.99,
+      description: "A durable, eco-friendly tote bag to carry your daily dose of good news.",
+      image: "/bag-shop.png",
       details: [
-        "Monthly digital newsletter",
-        "Early access to articles",
-        "Exclusive content",
-        "Cancel anytime"
+        "100% recycled canvas",
+        "Reinforced handles",
+        "Interior pocket",
+        "Machine washable"
       ]
     }
-  ];
+];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-4">
@@ -52,14 +52,14 @@ const Shop = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map(product => (
-            <div key={product.id} className="bg-stone-50 rounded-lg overflow-hidden flex flex-col">
-              <div className="aspect-w-3 aspect-h-2 bg-stone-100">
-                <img 
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+         <div key={product.id} className="bg-stone-50 rounded-lg overflow-hidden flex flex-col">
+         <div className="aspect-w-3 aspect-h-2">
+           <img 
+             src={product.image}
+             alt={product.name}
+             className="w-full h-full object-cover"
+           />
+         </div>
               
               <div className="p-6 flex-1 flex flex-col">
                 <h2 className="text-lg font-medium text-slate-800 mb-2">
@@ -74,7 +74,7 @@ const Shop = () => {
                     ${product.price}
                   </span>
                   <button 
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg 
+                    className="px-4 py-2 bg-emerald-800 text-white rounded-lg 
                       hover:bg-green-700 transition-colors duration-50 
                       font-medium shadow-sm hover:shadow-md text-sm"
                   >
