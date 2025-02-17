@@ -9,16 +9,13 @@ const Hero = () => (
         filter: 'brightness(0.4)'
       }}
     />
-    <div className="pt-10 relative z-10 h-full flex justify-center items-center">
+    <div className="pt-6 relative z-10 h-full flex justify-center items-center">
       <div className="text-center">
         <img 
           src="/logo.svg" 
           alt="TruGoodBeautiful Logo" 
-          className="h-20 mx-auto filter"
+          className="h-20 w-72 filter object-contain" // Added w-44 and object-contain
         />
-        <p className="text-lg text-white mt-2">
-          Finding light in the headlines
-        </p>
       </div>
     </div>
   </div>

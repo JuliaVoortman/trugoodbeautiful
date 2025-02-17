@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import useArticles from './hooks/useArticles';
 import { layoutStyles } from './styles/layout';
@@ -11,7 +11,8 @@ import './App.css';
 import Home from './pages/Home';
 import HowItWorks from './pages/HowItWorks';
 import Sponsors from './pages/Sponsors';
-import Donate from './pages/Donate';
+import Shop from './pages/Shop';
+import Sources from './pages/Sources';
 
 function App() {
   const { articles, loading, error } = useArticles();
@@ -60,7 +61,8 @@ function App() {
               />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/sponsors" element={<Sponsors />} />
-              <Route path="/donate" element={<Donate />} />
+              <Route path="/sources" element={<Sources />} />
+              <Route path="/shop" element={<Shop />} />
             </Routes>
           </div>
   

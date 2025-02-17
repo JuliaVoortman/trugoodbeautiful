@@ -8,27 +8,50 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
   const [featuredArticle, setFeaturedArticle] = useState(null);
   const [selectedDate, setSelectedDate] = useState('all');
 
-  // Extract unique dates from articles
-  const uniqueDates = [...new Set(articles?.map(article => {
-    const date = new Date(article.fields.publicationDate);
+  // Helper function to get relative date string
+  const getRelativeDateString = (daysAgo) => {
+    const date = new Date();
+    date.setDate(date.getDate() - daysAgo);
     return date.toLocaleDateString('en-US', { 
+      weekday: 'long',
       month: 'long', 
       day: 'numeric',
       year: 'numeric'
     });
-  }))].sort((a, b) => new Date(b) - new Date(a));
+  };
+
+  // Extract unique dates from articles with proper formatting
+  const uniqueDates = [...new Set(articles?.map(article => {
+    if (!article.fields.publicationDate) return null;
+    const date = new Date(article.fields.publicationDate);
+    return date.toLocaleDateString('en-US', { 
+      weekday: 'long',
+      month: 'long', 
+      day: 'numeric',
+      year: 'numeric'
+    });
+  }))].filter(Boolean).sort((a, b) => new Date(b) - new Date(a));
 
   // Filter articles by selected date - memoized with useCallback
   const filterArticlesByDate = useCallback((articlesToFilter) => {
-    if (selectedDate === 'all') return articlesToFilter;
+    if (!articlesToFilter || selectedDate === 'all') return articlesToFilter;
     
     return articlesToFilter.filter(article => {
+      if (!article.fields.publicationDate) return false;
       const articleDate = new Date(article.fields.publicationDate);
       const formattedDate = articleDate.toLocaleDateString('en-US', {
+        weekday: 'long',
         month: 'long',
         day: 'numeric',
         year: 'numeric'
       });
+
+      if (selectedDate === 'today') {
+        return formattedDate === getRelativeDateString(0);
+      } else if (selectedDate === 'yesterday') {
+        return formattedDate === getRelativeDateString(1);
+      }
+      
       return formattedDate === selectedDate;
     });
   }, [selectedDate]);
@@ -77,7 +100,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     <div>
       {/* Featured Story Header with Date Filter */}
       <div className="flex justify-between items-center pl-2 mb-2">
-        <h1 className="text-xl font-semibold text-slate-800">
+        <h1 className="text-xl text-slate-700">
           Featured story
         </h1>
         <select
@@ -87,11 +110,20 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
             focus:outline-none focus:ring-2 focus:ring-green-500"
         >
           <option value="all">All dates</option>
-          {uniqueDates.map(date => (
-            <option key={date} value={date}>
-              {date}
-            </option>
-          ))}
+          <option value="today">Today</option>
+          <option value="yesterday">Yesterday</option>
+          <option disabled>──────────</option>
+          {uniqueDates
+            .filter(date => 
+              date !== getRelativeDateString(0) && 
+              date !== getRelativeDateString(1)
+            )
+            .map(date => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))
+          }
         </select>
       </div>
 

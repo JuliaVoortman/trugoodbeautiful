@@ -6,7 +6,7 @@ const Navigation = () => {
     { path: '/', label: 'Articles', exact: true },
     { path: '/how-it-works', label: 'How it works' },
     { path: '/sponsors', label: 'Sponsors' },
-    { path: '/donate', label: 'Donate' }
+    { path: '/shop', label: 'Shop' }
   ];
 
   return (
@@ -19,7 +19,7 @@ const Navigation = () => {
               to={path}
               end={exact}
               className={({ isActive }) => `
-                relative !text-white hover:!text-slate-200 
+                relative !text-white hover:!text-green-500/90
                 transition-colors underline cursor-pointer 
                 py-1 px-1 ${isActive ? 'font-medium' : ''}
               `}

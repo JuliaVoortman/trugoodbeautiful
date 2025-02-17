@@ -2,9 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Merriweather', 'serif'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography')
   ],
 }

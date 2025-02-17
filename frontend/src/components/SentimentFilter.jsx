@@ -22,21 +22,21 @@ const SentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
   };
 
   return (
-    <div className="-mt-16 flex justify-center gap-4 py-4 border-b border-slate-300">
+    <div className="-mt-16 flex justify-start px-4 sm:px-6 py-4 border-b border-slate-200">
       {sentiments.map((sentiment) => (
         <button
           key={sentiment.id}
           onClick={() => handleSentimentClick(sentiment.id)}
-          className={`w-44 h-12 flex items-center justify-center rounded-xl 
-            transition-all duration-100 font-medium cursor-pointer
+          className={`
+            px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 mr-4
+            shadow-sm hover:shadow-md
             ${selectedSentiment === sentiment.id
-              ? `${sentiment.color} text-white shadow-lg transform -translate-y-1 scale-105 border-2 border-white`
-              : 'bg-white text-slate-600 bg-stone-50 -translate-y-0.5 shadow-md hover:shadow-lg'
-            }`}
+              ? `${sentiment.color} text-white`
+              : 'bg-white text-slate-600 hover:bg-slate-50'
+            }
+          `}
         >
-          <span className="block w-full text-center">
-            {sentiment.label}
-          </span>
+          {sentiment.label}
         </button>
       ))}
     </div>
