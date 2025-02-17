@@ -20,8 +20,8 @@ const Navigation = () => {
               end={exact}
               className={({ isActive }) => `
                 relative !text-white hover:!text-green-500/90
-                transition-colors underline cursor-pointer 
-                py-1 px-1 ${isActive ? 'font-medium' : ''}
+                transition-colors underline underline-offset-4 decoration-1 cursor-pointer 
+                py-1 px-1 ${isActive ? '' : ''}
               `}
             >
               {({ isActive }) => (

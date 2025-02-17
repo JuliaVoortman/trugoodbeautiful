@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { getPage, getSources } from '../lib/contentful';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const Sources = () => {
   const [pageContent, setPageContent] = useState(null);

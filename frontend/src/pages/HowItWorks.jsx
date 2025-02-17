@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { getPage, getSources } from '../lib/contentful';
+import { getPage } from '../lib/contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const HowItWorks = () => {
   const [pageContent, setPageContent] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sources, setSources] = useState([]);
-
+  
   useEffect(() => {
     const fetchContent = async () => {
       try {
         const [page, sourcesData] = await Promise.all([
           getPage('How it works'),
-          getSources()
         ]);
         
         if (page?.fields) {
           setPageContent(page);
         }
-        setSources(sourcesData);
       } catch (error) {
         console.error('Error fetching content:', error);
       } finally {

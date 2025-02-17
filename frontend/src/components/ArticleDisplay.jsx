@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 import ArticleCard from './ArticleCard';
 import FeaturedStory from './FeaturedStory';
 
@@ -8,7 +10,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
   const [featuredArticle, setFeaturedArticle] = useState(null);
   const [selectedDate, setSelectedDate] = useState('all');
 
-  // Helper function to get relative date string
   const getRelativeDateString = (daysAgo) => {
     const date = new Date();
     date.setDate(date.getDate() - daysAgo);
@@ -20,7 +21,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     });
   };
 
-  // Extract unique dates from articles with proper formatting
   const uniqueDates = [...new Set(articles?.map(article => {
     if (!article.fields.publicationDate) return null;
     const date = new Date(article.fields.publicationDate);
@@ -32,7 +32,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     });
   }))].filter(Boolean).sort((a, b) => new Date(b) - new Date(a));
 
-  // Filter articles by selected date - memoized with useCallback
   const filterArticlesByDate = useCallback((articlesToFilter) => {
     if (!articlesToFilter || selectedDate === 'all') return articlesToFilter;
     
@@ -56,7 +55,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     });
   }, [selectedDate]);
 
-  // Set featured article and initial articles when articles array or date filter changes
   useEffect(() => {
     if (articles?.length > 0) {
       const filteredArticles = filterArticlesByDate(articles);
@@ -78,7 +76,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     }
   }, [articles, selectedDate, filterArticlesByDate]);
 
-  // Update displayed articles when count changes
   useEffect(() => {
     if (articles?.length > 1) {
       const filteredArticles = filterArticlesByDate(articles);
@@ -98,43 +95,106 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
 
   return (
     <div>
-      {/* Featured Story Header with Date Filter */}
       <div className="flex justify-between items-center pl-2 mb-2">
         <h1 className="text-xl text-slate-700">
           Featured story
         </h1>
-        <select
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-600 
-            focus:outline-none focus:ring-2 focus:ring-green-500"
-        >
-          <option value="all">All dates</option>
-          <option value="today">Today</option>
-          <option value="yesterday">Yesterday</option>
-          <option disabled>──────────</option>
-          {uniqueDates
-            .filter(date => 
-              date !== getRelativeDateString(0) && 
-              date !== getRelativeDateString(1)
-            )
-            .map(date => (
-              <option key={date} value={date}>
-                {date}
-              </option>
-            ))
-          }
-        </select>
+        <Menu as="div" className="relative inline-block text-left">
+          <Menu.Button className="inline-flex w-full justify-between items-center px-4 py-2 bg-white border 
+            border-slate-200 rounded-lg text-sm text-slate-600 hover:border-slate-300 
+            focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent
+            font-medium transition-colors duration-150">
+            {selectedDate === 'all' ? 'All dates' : 
+             selectedDate === 'today' ? 'Today' :
+             selectedDate === 'yesterday' ? 'Yesterday' : 
+             selectedDate}
+            <svg className="h-4 w-4 ml-2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </Menu.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-slate-100 
+              rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+              <div className="px-1 py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => setSelectedDate('all')}
+                      className={`${
+                        active ? 'bg-emerald-500 text-white' : 'text-slate-700'
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      All dates
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => setSelectedDate('today')}
+                      className={`${
+                        active ? 'bg-emerald-500 text-white' : 'text-slate-700'
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      Today
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => setSelectedDate('yesterday')}
+                      className={`${
+                        active ? 'bg-emerald-500 text-white' : 'text-slate-700'
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      Yesterday
+                    </button>
+                  )}
+                </Menu.Item>
+              </div>
+              {uniqueDates.length > 0 && (
+                <div className="px-1 py-1">
+                  {uniqueDates
+                    .filter(date => 
+                      date !== getRelativeDateString(0) && 
+                      date !== getRelativeDateString(1)
+                    )
+                    .map(date => (
+                      <Menu.Item key={date}>
+                        {({ active }) => (
+                          <button
+                            onClick={() => setSelectedDate(date)}
+                            className={`${
+                              active ? 'bg-emerald-500 text-white' : 'text-slate-700'
+                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                          >
+                            {date}
+                          </button>
+                        )}
+                      </Menu.Item>
+                    ))}
+                </div>
+              )}
+            </Menu.Items>
+          </Transition>
+        </Menu>
       </div>
 
-      {/* Featured Story Section */}
       {featuredArticle && (
         <div className="pt-2 pb-20">
           <FeaturedStory article={featuredArticle} />
         </div>
       )}
 
-      {/* Article Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedArticles.map((article) => (
           <ArticleCard 
@@ -144,7 +204,6 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
         ))}
       </div>
 
-      {/* Load More Button */}
       {hasMore && (
         <div className="flex justify-center mt-8">
           <button
