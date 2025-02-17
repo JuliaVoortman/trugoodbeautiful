@@ -9,7 +9,7 @@ const HowItWorks = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const [page, sourcesData] = await Promise.all([
+        const [page] = await Promise.all([
           getPage('How it works'),
         ]);
         
@@ -45,9 +45,9 @@ const HowItWorks = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
-       <h1 className="text-2xl font-medium text-slate-700 mb-6">
+    <div className="max-w-4xl mx-auto px-4 py-4">
+      <div className="bg-white rounded-xl shadow-sm p-8">
+       <h1 className="text-xl font-medium text-slate-700 mb-6">
           {pageContent.fields.title}
         </h1>
         
@@ -81,7 +81,7 @@ const HowItWorks = () => {
         </div>
 
         {/* Second Content Block */}
-        <article className="prose prose-slate lg:prose-lg max-w-none mt-8">
+        <article className="prose prose-slate text-slate-600 lg:prose-lg max-w-none mt-8">
           <div 
             dangerouslySetInnerHTML={{ 
               __html: documentToHtmlString(pageContent.fields.content2)

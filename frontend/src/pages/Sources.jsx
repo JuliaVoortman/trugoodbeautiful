@@ -47,7 +47,7 @@ const Sources = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 pt-12">
+    <div className="max-w-4xl mx-auto px-4 py-4">
 
       {/* Sources Section */}
       <div className="bg-white rounded-xl shadow-sm p-8">

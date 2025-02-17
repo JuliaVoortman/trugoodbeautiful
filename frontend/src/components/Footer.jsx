@@ -5,10 +5,10 @@ const Footer = ({ className }) => {
   const footerLinks = [
     { path: '/', label: 'Articles' },
     { path: '/how-it-works', label: 'How it works' },
+    { path: '/sponsors', label: 'Sources' },
     { path: '/sponsors', label: 'Sponsors' },
     { path: '/shop', label: 'Shop' },
-    { path: '/sources', label: 'Sources' },
-    { path: '/terms-and-conditions', label: 'Terms & conditions' }
+    { path: '/shop', label: 'Contact us' },
   ];
 
   return (
@@ -26,7 +26,7 @@ const Footer = ({ className }) => {
                   {link.label}
                 </Link>
                 {index < footerLinks.length - 1 && (
-                  <span className="hidden sm:inline text-gray-500">•</span>
+                  <span className="hidden sm:inline text-gray-500"></span>
                 )}
               </React.Fragment>
             ))}
