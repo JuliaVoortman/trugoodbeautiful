@@ -54,7 +54,7 @@ const Footer = ({ className }) => (
           rel="noopener noreferrer"
           className="hover:text-gray-600 transition-colors"
         >
-          Made with ❤️ by Julia
+          Made with ❤️
         </a>
       </div>
     </div>
