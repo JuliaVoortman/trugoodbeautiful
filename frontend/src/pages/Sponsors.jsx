@@ -121,7 +121,7 @@ const Sponsors = () => {
   <div className="text-center">
           <button 
             className="px-8 py-3 bg-green-600 text-white rounded-xl 
-              hover:bg-green-700 transition-colors duration-200 
+              hover:bg-green-700 transition-colors duration-50 
               font-medium shadow-sm hover:shadow-md"
           >
             Make a Donation

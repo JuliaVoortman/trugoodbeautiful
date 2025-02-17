@@ -52,7 +52,7 @@ const HowItWorks = () => {
         </h1>
         
         {/* First Content Block */}
-        <article className="prose prose-slate lg:prose-lg max-w-none">
+        <article className="prose prose-slate text-slate-600 lg:prose-lg max-w-none">
           <div 
             dangerouslySetInnerHTML={{ 
               __html: documentToHtmlString(pageContent.fields.content)

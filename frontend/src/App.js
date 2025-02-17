@@ -13,6 +13,7 @@ import HowItWorks from './pages/HowItWorks';
 import Sponsors from './pages/Sponsors';
 import Shop from './pages/Shop';
 import Sources from './pages/Sources';
+import Contact from './pages/Contact';
 
 function App() {
   const { articles, loading, error } = useArticles();
@@ -63,6 +64,7 @@ function App() {
               <Route path="/sponsors" element={<Sponsors />} />
               <Route path="/sources" element={<Sources />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </div>
   

@@ -8,7 +8,7 @@ const Footer = ({ className }) => {
     { path: '/sponsors', label: 'Sources' },
     { path: '/sponsors', label: 'Sponsors' },
     { path: '/shop', label: 'Shop' },
-    { path: '/shop', label: 'Contact us' },
+    { path: '/contact', label: 'Contact us' },
   ];
 
   return (
