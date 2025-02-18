@@ -5,7 +5,7 @@ const SentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
     { 
       id: 'positive',
       label: 'The good stuff', 
-      color: 'bg-emerald-800',
+      color: 'bg-green-600',
       contentfulType: 'Positive'
     },
     { 

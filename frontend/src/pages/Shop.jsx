@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Shop = () => {
-  const products = [
+ const products = [
     {
       id: 1,
       name: "TruGoodBeautiful T-Shirt",
@@ -74,7 +74,7 @@ const Shop = () => {
                     ${product.price}
                   </span>
                   <button 
-                    className="px-4 py-2 bg-emerald-800 text-white rounded-lg 
+                    className="px-4 py-2 bg-green-600 text-white rounded-lg 
                       hover:bg-green-700 transition-colors duration-50 
                       font-medium shadow-sm hover:shadow-md text-sm"
                   >

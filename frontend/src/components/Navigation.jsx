@@ -13,24 +13,29 @@ const Navigation = () => {
   return (
     <nav className="absolute top-0 left-0 right-0 bg-slate-900/50 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4 py-2">
-        <div className="flex justify-end space-x-8">
+        <div className="flex justify-end gap-2 sm:gap-8">
           {navItems.map(({ path, label, exact }) => (
             <NavLink 
               key={path}
               to={path}
               end={exact}
               className={({ isActive }) => `
-                relative !text-white hover:!text-green-500/90
-                transition-colors underline underline-offset-4 decoration-1 cursor-pointer 
-                py-1 px-1 ${isActive ? '' : ''}
-              `}
+              relative text-[12px] sm:text-base !text-white 
+              hover:!text-green-500/90 transition-colors
+              border sm:border-0 border-white/30 rounded-md sm:rounded-none
+              py-1 px-2.5 sm:px-0
+              sm:underline sm:underline-offset-[3px] sm:decoration-white/60 sm:decoration-[0.5px]
+              ${isActive ? 'bg-green-600 sm:bg-transparent border-green-600 sm:border-0 sm:!text-green-500' : ''}
+              ${isActive ? `
+                sm:before:absolute sm:before:left-[-12px] sm:before:top-1/2 sm:before:-translate-y-1/2 
+                sm:before:w-1.5 sm:before:h-1.5 sm:before:bg-green-600 sm:before:rounded-full
+                sm:before:content-['']
+              ` : ''}
+            `}
             >
               {({ isActive }) => (
-                <div className="relative">
+                <div className="relative whitespace-nowrap">
                   {label}
-                  {isActive && (
-                    <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400 rounded-full" />
-                  )}
                 </div>
               )}
             </NavLink>
