@@ -20,7 +20,7 @@ const Navigation = () => {
        to={path}
        end={exact}
        className={({ isActive }) => `
-         relative text-base sm:text-[16px] !text-white 
+         relative text-[14px] sm:text-[16px] !text-white 
          sm:hover:!text-green-500/90 transition-colors
          border sm:border-0 border-white/30 rounded-md sm:rounded-none
          py-1 px-2.5 sm:px-0
