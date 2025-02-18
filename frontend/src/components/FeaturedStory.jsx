@@ -34,7 +34,7 @@ const FeaturedStory = ({ article }) => (
 </div>
 
         <h3 className="text-lg font-medium font-semibold text-slate-800 mb-2">
-          {article.fields?.pageName}
+          {article.fields?.title}
         </h3>
 
         <p className="text-slate-600 mb-4 line-clamp-2 flex-grow">
@@ -44,7 +44,7 @@ const FeaturedStory = ({ article }) => (
         {article.fields?.image?.fields?.file?.url && (
           <img 
             src={`https:${article.fields.image.fields.file.url}`}
-            alt={article.fields.image.fields.title || article.fields.pageName}
+            alt={article.fields.image.fields.title || article.fields.title}
             className="w-full h-32 object-cover mb-4 rounded-lg"
           />
         )}

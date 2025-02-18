@@ -28,11 +28,11 @@ const SentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
           key={sentiment.id}
           onClick={() => handleSentimentClick(sentiment.id)}
           className={`
-            px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 mr-4
-            shadow-sm hover:shadow-md
+            px-6 py-2.5 rounded-lg text-sm transition-all duration-150 mr-4
+            shadow-sm 
             ${selectedSentiment === sentiment.id
               ? `${sentiment.color} text-white`
-              : 'bg-white text-slate-600 hover:bg-slate-50'
+              : 'bg-white text-slate-600 hover:bg-stone-200'
             }
           `}
         >
