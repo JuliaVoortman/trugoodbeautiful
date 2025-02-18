@@ -65,7 +65,7 @@ const Sources = () => {
         Score
       </th>
       <th className="px-2 py-3 text-left text-[10px] sm:text-base uppercase tracking-wider font-medium text-slate-500 w-[25%]">
-        AllSides bias
+        <a href="https://www.allsides.com/media-bias/ratings" className="underline">AllSides</a> rating
       </th>
     </tr>
   </thead>
