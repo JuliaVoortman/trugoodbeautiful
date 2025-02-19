@@ -53,22 +53,22 @@ const Sources = () => {
         
         <div className="overflow-x-auto">
         <table className="w-full divide-y divide-slate-200 border border-slate-200 rounded-lg table-fixed">
-  <thead>
-    <tr className="bg-stone-50">
-      <th className="px-2 py-3 text-left text-[10px] sm:text-base uppercase tracking-wider font-medium text-slate-500 w-[15%]">
-        Source
-      </th>
-      <th className="px-2 py-3 text-left text-[10px] sm:text-base uppercase tracking-wider font-medium text-slate-500 w-[45%]">
-        Description
-      </th>
-      <th className="px-2 py-3 text-left text-[10px] sm:text-base uppercase tracking-wider font-medium text-slate-500 w-[15%]">
-        Score
-      </th>
-      <th className="px-2 py-3 text-left text-[10px] sm:text-base uppercase tracking-wider font-medium text-slate-500 w-[25%]">
-        <a href="https://www.allsides.com/media-bias/ratings" className="underline">AllSides</a> rating
-      </th>
-    </tr>
-  </thead>
+        <thead>
+  <tr className="bg-stone-50">
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider font-medium text-slate-500 w-[15%]">
+      Source
+    </th>
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider font-medium text-slate-500 w-[45%]">
+      Description
+    </th>
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider font-medium text-slate-500 w-[15%]">
+      Score
+    </th>
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider font-medium text-slate-500 w-[25%]">
+      <a href="https://www.allsides.com/media-bias/ratings" className="underline">AllSides</a> rating
+    </th>
+  </tr>
+</thead>
   <tbody className="divide-y divide-slate-200 bg-white">
   {sources.map((source) => (
     <tr key={source.sys.id} className="hover:bg-blue-600/10 transition-colors duration-50">

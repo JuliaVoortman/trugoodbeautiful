@@ -41,6 +41,29 @@ export const getSponsors = async () => {
   }
 };
 
+export const getStories = async () => {
+  console.log('Fetching stories from Contentful');
+  try {
+    const response = await client.getEntries({
+      content_type: 'story', // Make sure this matches the ID in your Contentful export
+      order: '-fields.publicationDate',
+      include: 2
+    });
+    
+    console.log('Stories response:', {
+      total: response.total,
+      items: response.items,
+      firstStory: response.items[0]
+    });
+    
+    return response.items;
+  } catch (error) {
+    console.error('Error fetching stories:', error);
+    throw error;
+  }
+};
+
+
 export const getArticles = async () => {
   try {
     const response = await client.getEntries({

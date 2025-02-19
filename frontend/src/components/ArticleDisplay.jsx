@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import ArticleCard from './ArticleCard';
-import FeaturedStory from './FeaturedStory';
+import FeaturedArticle from './FeaturedArticle';
 
 const ArticleDisplay = ({ articles, selectedSentiment }) => {
   const [displayCount, setDisplayCount] = useState(3);
@@ -97,7 +97,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
     <div>
       <div className="flex justify-between items-center pl-2 mb-2">
         <h1 className="text-xl text-slate-700">
-          Featured story
+          Featured article
         </h1>
         <Menu as="div" className="relative inline-block text-left">
           <Menu.Button className="inline-flex w-full justify-between items-center px-4 py-2 bg-white border 
@@ -191,7 +191,7 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
 
       {featuredArticle && (
         <div className="pt-2 pb-20">
-          <FeaturedStory article={featuredArticle} />
+          <FeaturedArticle article={featuredArticle} />
         </div>
       )}
 
