@@ -5,15 +5,11 @@ import StoryCard from './StoryCard';
 import FeaturedStory from './FeaturedStory';
 
 const StoryDisplay = ({ stories, selectedSentiment }) => {
-  // Enhanced debugging at component entry
+  // Debug logging for incoming props
   console.log('StoryDisplay Component Debug:', {
-    stories,
+    storiesCount: stories?.length,
     selectedSentiment,
-    storiesLength: stories?.length,
-    firstStory: stories?.[0],
-    storyFields: stories?.[0]?.fields,
-    contentType: stories?.[0]?.sys?.contentType,
-    sentiment: stories?.[0]?.fields?.sentiment?.fields?.title
+    firstStory: stories?.[0]
   });
 
   const [displayCount, setDisplayCount] = useState(3);
@@ -21,6 +17,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
   const [featuredStory, setFeaturedStory] = useState(null);
   const [selectedDate, setSelectedDate] = useState('all');
 
+  // Helper function for date formatting
   const getRelativeDateString = (daysAgo) => {
     const date = new Date();
     date.setDate(date.getDate() - daysAgo);
@@ -32,11 +29,9 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
     });
   };
 
+  // Get unique dates for filter menu
   const uniqueDates = [...new Set(stories?.map(story => {
-    if (!story?.fields?.publicationDate) {
-      console.log('Story missing publication date:', story);
-      return null;
-    }
+    if (!story?.fields?.publicationDate) return null;
     const date = new Date(story.fields.publicationDate);
     return date.toLocaleDateString('en-US', { 
       weekday: 'long',
@@ -46,24 +41,13 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
     });
   }))].filter(Boolean).sort((a, b) => new Date(b) - new Date(a));
 
+  // Filter stories by date
   const filterStoriesByDate = useCallback((storiesToFilter) => {
-    console.log('Filter Debug:', {
-      inputStoriesCount: storiesToFilter?.length,
-      selectedDate,
-      firstStoryDate: storiesToFilter?.[0]?.fields?.publicationDate,
-      dateType: typeof storiesToFilter?.[0]?.fields?.publicationDate
-    });
-
-    if (!storiesToFilter || selectedDate === 'all') {
-      console.log('Returning all stories:', storiesToFilter?.length);
-      return storiesToFilter;
-    }
+    if (!storiesToFilter || selectedDate === 'all') return storiesToFilter;
     
     return storiesToFilter.filter(story => {
-      if (!story?.fields?.publicationDate) {
-        console.log('Story missing publication date in filter:', story);
-        return false;
-      }
+      if (!story?.fields?.publicationDate) return false;
+      
       const storyDate = new Date(story.fields.publicationDate);
       const formattedDate = storyDate.toLocaleDateString('en-US', {
         weekday: 'long',
@@ -77,74 +61,34 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
       } else if (selectedDate === 'yesterday') {
         return formattedDate === getRelativeDateString(1);
       }
-      
       return formattedDate === selectedDate;
     });
   }, [selectedDate]);
 
+  // Handle initial load and date filtering
   useEffect(() => {
-    console.log('Main Effect Debug:', {
-      hasStories: stories?.length > 0,
-      storiesLength: stories?.length,
-      currentFeatured: featuredStory,
-      currentDisplayed: displayedStories.length
-    });
-
     if (stories?.length > 0) {
       const filteredStories = filterStoriesByDate(stories);
-      console.log('After filtering:', {
-        filteredCount: filteredStories?.length,
-        firstFilteredStory: filteredStories?.[0]
-      });
       
       if (filteredStories?.length > 0) {
         const featured = filteredStories[0];
-        console.log('Setting featured:', featured);
         setFeaturedStory(featured);
         
-        const remaining = filteredStories.slice(1, 4);
-        console.log('Setting displayed:', remaining);
+        const remaining = filteredStories.slice(1, displayCount + 1);
         setDisplayedStories(remaining);
-        setDisplayCount(3);
       } else {
         setFeaturedStory(null);
         setDisplayedStories([]);
       }
-    } else {
-      setFeaturedStory(null);
-      setDisplayedStories([]);
     }
-  }, [stories, selectedDate, filterStoriesByDate]);
+  }, [stories, selectedDate, filterStoriesByDate, displayCount]);
 
-  useEffect(() => {
-    console.log('Display count effect:', {
-      displayCount,
-      storiesLength: stories?.length
-    });
-
-    if (stories?.length > 1) {
-      const filteredStories = filterStoriesByDate(stories);
-      setDisplayedStories(filteredStories.slice(1, displayCount + 1));
-    }
-  }, [displayCount, stories, filterStoriesByDate]);
-
-  const hasMore = filterStoriesByDate(stories)?.length > (displayCount + 1);
-
+  // Handle load more functionality
   const handleLoadMore = () => {
-    setDisplayCount(prev => prev + 3);
+    setDisplayCount(prevCount => prevCount + 3);
   };
 
-  if (!stories) {
-    console.log('No stories provided');
-    return <div>Loading stories...</div>;
-  }
-
-  console.log('Before render:', {
-    featuredStory,
-    displayedStoriesCount: displayedStories.length,
-    hasMore,
-    selectedDate
-  });
+  const hasMore = filterStoriesByDate(stories)?.length > (displayCount + 1);
 
   return (
     <div>
@@ -165,6 +109,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </Menu.Button>
+
           <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
