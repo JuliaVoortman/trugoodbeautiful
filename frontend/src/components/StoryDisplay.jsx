@@ -155,7 +155,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
         <Menu as="div" className="relative inline-block text-left">
           <Menu.Button className="inline-flex w-full justify-between items-center px-4 py-2 bg-white border 
             border-slate-200 rounded-lg text-sm text-slate-600 hover:border-slate-300 
-            focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent
+            focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent
             font-medium transition-colors duration-150">
             {selectedDate === 'all' ? 'All dates' : 
              selectedDate === 'today' ? 'Today' :
@@ -182,7 +182,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
                     <button
                       onClick={() => setSelectedDate('all')}
                       className={`${
-                        active ? 'bg-blue-700 text-white' : 'text-slate-700'
+                        active ? 'bg-green-600 text-white' : 'text-slate-700'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       All dates
@@ -194,7 +194,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
                     <button
                       onClick={() => setSelectedDate('today')}
                       className={`${
-                        active ? 'bg-blue-700 text-white' : 'text-slate-700'
+                        active ? 'bg-green-600 text-white' : 'text-slate-700'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       Today
@@ -206,7 +206,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
                     <button
                       onClick={() => setSelectedDate('yesterday')}
                       className={`${
-                        active ? 'bg-blue-700 text-white' : 'text-slate-700'
+                        active ? 'bg-green-600 text-white' : 'text-slate-700'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       Yesterday
@@ -227,7 +227,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
                           <button
                             onClick={() => setSelectedDate(date)}
                             className={`${
-                              active ? 'bg-blue-700 text-white' : 'text-slate-700'
+                              active ? 'bg-green-600 text-white' : 'text-slate-700'
                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                           >
                             {date}
