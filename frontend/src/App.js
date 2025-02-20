@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import useArticles from './hooks/useArticles';
 import useStories from './hooks/useStories';
-import { layoutStyles } from './styles/layout';
 import './App.css';
 
 // Import page components
@@ -18,60 +18,42 @@ import Sources from './pages/Sources';
 import Contact from './pages/Contact';
 
 const App = () => {
-  // Fetch data using custom hooks
+  // Articles state and data
   const { articles, loading: articlesLoading, error: articlesError } = useArticles();
+  const [selectedSentiment, setSelectedSentiment] = useState('positive');
+
+  // Stories state and data
   const { stories, loading: storiesLoading, error: storiesError } = useStories();
+  const [storySelectedSentiment, setStorySelectedSentiment] = useState('positive');
 
-  // Sentiment state for both content types
-  const [articleSentiment, setArticleSentiment] = useState('positive');
-  const [storySentiment, setStorySentiment] = useState('positive');
+  // Filter stories based on sentiment
+  const filteredStories = stories?.filter(story => {
+    const sentiment = story?.fields?.sentimentType?.fields?.title;
+    return storySelectedSentiment === 'positive' 
+      ? sentiment === 'Positive'
+      : ['Neutral', 'Negative'].includes(sentiment);
+  }) || [];
 
-  // Filter functions for both content types
-  const getFilteredContent = (content, selectedSentiment) => {
-    if (!content) return [];
-    
-    return content.filter(item => {
-      const sentiment = item?.fields?.sentimentType?.fields?.title;
-      return selectedSentiment === 'positive'
-        ? sentiment === 'Positive'
-        : ['Neutral', 'Negative'].includes(sentiment);
-    });
-  };
+  // Filter articles based on sentiment
+  const filteredArticles = articles?.filter(article => {
+    const sentiment = article?.fields?.sentimentType?.fields?.title;
+    return selectedSentiment === 'positive' 
+      ? sentiment === 'Positive'
+      : ['Neutral', 'Negative'].includes(sentiment);
+  }) || [];
 
-  // Filter both content types
-  const filteredArticles = getFilteredContent(articles, articleSentiment);
-  const filteredStories = getFilteredContent(stories, storySentiment);
-
-  // Debug logging
-  useEffect(() => {
-    console.log('Content States:', {
-      articles: {
-        total: articles?.length,
-        filtered: filteredArticles.length,
-        sentiment: articleSentiment
-      },
-      stories: {
-        total: stories?.length,
-        filtered: filteredStories.length,
-        sentiment: storySentiment
-      }
-    });
-  }, [articles, stories, filteredArticles, filteredStories, articleSentiment, storySentiment]);
-
-  // Loading state
   if (articlesLoading || storiesLoading) {
     return (
-      <div className={layoutStyles.loadingContainer}>
-        <div className={layoutStyles.loadingText}>Loading content...</div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-slate-600">Loading stories of progress...</div>
       </div>
     );
   }
 
-  // Error state
   if (articlesError || storiesError) {
     return (
-      <div className={layoutStyles.loadingContainer}>
-        <div className={layoutStyles.errorText}>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-red-600">
           Error: {articlesError || storiesError}
         </div>
       </div>
@@ -80,30 +62,29 @@ const App = () => {
 
   return (
     <Router>
-      <div className={layoutStyles.container}>
+      <ScrollToTop />
+      <div className="min-h-screen bg-white">
         <Navigation />
         <Hero />
 
-        <div className={layoutStyles.mainContent}>
+        <main className="container mx-auto px-4 py-8">
           <Routes>
-            {/* Stories is now the home page */}
             <Route 
               path="/" 
               element={
                 <Stories 
-                  selectedSentiment={storySentiment}
-                  setSelectedSentiment={setStorySentiment}
+                  selectedSentiment={storySelectedSentiment}
+                  setSelectedSentiment={setStorySelectedSentiment}
                   filteredStories={filteredStories}
                 />
               } 
             />
-            {/* Articles has moved to its own route */}
             <Route 
               path="/articles" 
               element={
                 <Articles 
-                  selectedSentiment={articleSentiment}
-                  setSelectedSentiment={setArticleSentiment}
+                  selectedSentiment={selectedSentiment}
+                  setSelectedSentiment={setSelectedSentiment}
                   filteredArticles={filteredArticles}
                 />
               } 
@@ -114,7 +95,7 @@ const App = () => {
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-        </div>
+        </main>
 
         <Footer />
       </div>

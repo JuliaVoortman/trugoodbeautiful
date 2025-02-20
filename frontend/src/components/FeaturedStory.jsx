@@ -37,7 +37,7 @@ const FeaturedStory = ({ story }) => (
             key={tag.sys.id}
             href={`/tags/${tag.fields.slug || tag.sys.id}`}
             className="px-3 py-1 text-sm bg-stone-50 text-slate-600 rounded-full flex items-center gap-1
-              hover:bg-stone-100 hover:text-green-600 transition-colors duration-150 group"
+              hover:bg-stone-100 hover:text-green-600 transition-colors duration-50 group"
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
