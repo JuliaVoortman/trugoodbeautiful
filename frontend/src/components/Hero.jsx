@@ -15,7 +15,7 @@ const Hero = () => (
         <Link to="/">
           <img 
             src="/logo.svg" 
-            alt="TruGoodBeautiful Logo" 
+            alt="trugoodbeautiful logo" 
             className="h-20 w-72 filter object-contain hover:opacity-90 transition-opacity"
           />
         </Link>
