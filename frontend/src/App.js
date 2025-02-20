@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
@@ -35,45 +35,49 @@ const App = () => {
     });
   }, [stories, storySelectedSentiment]);
 
-  // Filter stories based on sentiment
-  const filteredStories = stories?.filter(story => {
-    const sentiment = story?.fields?.sentimentType?.fields?.title;
-    
-    console.log('Filtering story:', {
-      id: story?.sys?.id,
-      title: story?.fields?.title,
-      sentiment,
-      selectedSentiment: storySelectedSentiment,
-      isPositive: sentiment === 'Positive',
-      isOther: ['Neutral', 'Negative'].includes(sentiment)
-    });
+  // Memoized filtered stories
+  const filteredStories = useMemo(() => {
+    return stories?.filter(story => {
+      const sentiment = story?.fields?.sentimentType?.fields?.title;
+      
+      console.log('Filtering story:', {
+        id: story?.sys?.id,
+        title: story?.fields?.title,
+        sentiment,
+        selectedSentiment: storySelectedSentiment,
+        isPositive: sentiment === 'Positive',
+        isOther: ['Neutral', 'Negative'].includes(sentiment)
+      });
 
-    if (!sentiment) return false;
+      if (!sentiment) return false;
 
-    return storySelectedSentiment === 'positive'
-      ? sentiment === 'Positive'
-      : ['Neutral', 'Negative'].includes(sentiment);
-  }) || [];
+      return storySelectedSentiment === 'positive'
+        ? sentiment === 'Positive'
+        : ['Neutral', 'Negative'].includes(sentiment);
+    }) || [];
+  }, [stories, storySelectedSentiment]);
 
-  // Filter articles based on sentiment
-  const filteredArticles = articles?.filter(article => {
-    const sentiment = article?.fields?.sentimentType?.fields?.title;
-    
-    console.log('Filtering article:', {
-      id: article?.sys?.id,
-      title: article?.fields?.title,
-      sentiment,
-      selectedSentiment,
-      isPositive: sentiment === 'Positive',
-      isOther: ['Neutral', 'Negative'].includes(sentiment)
-    });
+  // Memoized filtered articles
+  const filteredArticles = useMemo(() => {
+    return articles?.filter(article => {
+      const sentiment = article?.fields?.sentimentType?.fields?.title;
+      
+      console.log('Filtering article:', {
+        id: article?.sys?.id,
+        title: article?.fields?.title,
+        sentiment,
+        selectedSentiment,
+        isPositive: sentiment === 'Positive',
+        isOther: ['Neutral', 'Negative'].includes(sentiment)
+      });
 
-    if (!sentiment) return false;
+      if (!sentiment) return false;
 
-    return selectedSentiment === 'positive'
-      ? sentiment === 'Positive'
-      : ['Neutral', 'Negative'].includes(sentiment);
-  }) || [];
+      return selectedSentiment === 'positive'
+        ? sentiment === 'Positive'
+        : ['Neutral', 'Negative'].includes(sentiment);
+    }) || [];
+  }, [articles, selectedSentiment]);
 
   // Debug logging for filtered results
   useEffect(() => {
@@ -106,7 +110,7 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen">
         <Navigation />
         <Hero />
 
