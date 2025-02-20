@@ -7,8 +7,8 @@
     });
   
   return (
-    <div className="bg-stone-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-      <div className="p-6">
+    <div className="bg-stone-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden h-fit">
+      <div className="p-6 flex flex-col">
         <div className="flex items-center gap-3 mb-4">
           <span className="px-3 py-1 text-sm bg-stone-50 text-slate-600 rounded-full">
             {article.fields?.allSidesBiasRating?.fields?.title || 'Center'}

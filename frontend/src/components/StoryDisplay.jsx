@@ -16,6 +16,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
     const [featuredStory, setFeaturedStory] = useState(null);
     const [selectedDate, setSelectedDate] = useState('all');
 
+
   // Helper function for date formatting
   const getRelativeDateString = (daysAgo) => {
     const date = new Date();
@@ -95,6 +96,32 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
   };
 
   const hasMore = filterStoriesByDate(stories)?.length > (displayCount + 1);
+
+  if (!stories?.length) {
+    return (
+      <div className="flex flex-col items-center justify-center py-10">
+        <a 
+          href="https://en.wikipedia.org/wiki/Transcendentals"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-105"
+        >
+          <img 
+            src="/wizard.png" 
+            alt="Friendly wizard - Click to learn about Transcendentals" 
+            className="w-60 h-70 cursor-pointer"
+          />
+        </a>
+        <p className="text-lg text-slate-700 text-center">
+          No stories here yet.
+          <br />
+          <span className="text-sm">
+            Try switching to another filter!
+          </span>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div>

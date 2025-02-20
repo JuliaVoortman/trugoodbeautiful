@@ -28,7 +28,7 @@ const StorySentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
           key={sentiment.id}
           onClick={() => handleSentimentClick(sentiment.id)}
           className={`
-            px-6 py-2.5 rounded-lg text-sm transition-all duration-50 mr-4
+            px-6 py-2.5 rounded-lg text-m transition-all duration-50 mr-4
             shadow-sm 
             ${selectedSentiment === sentiment.id
               ? `${sentiment.color} text-white`

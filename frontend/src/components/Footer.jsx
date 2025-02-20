@@ -9,7 +9,7 @@ const Footer = ({ className }) => {
     { path: '/sources', label: 'Sources' },
     { path: '/shop', label: 'Shop' },
     { path: '/sponsors', label: 'Sponsors' },
-    { path: '/contact', label: 'Contact us' }
+    { path: '/contact', label: 'Contact us' },
   ];
 
   return (
@@ -17,7 +17,7 @@ const Footer = ({ className }) => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Navigation Links */}
         <div className="mb-4">
-          <nav className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-x-2 gap-y-3 text-sm">
+          <nav className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-x-2 gap-y-3 text-m">
             {footerLinks.map((link, index) => (
               <React.Fragment key={link.path}>
                 <Link

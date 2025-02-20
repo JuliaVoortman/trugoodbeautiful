@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FeaturedArticle = ({ article }) => (
-  <div>
+  <div className="pb-6 sm:pb-6">
     <div className="bg-stone-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 h-full max-h-72 flex flex-col">
       <div className="p-6 flex-grow">
       <div className="flex items-center gap-3 mb-4">
