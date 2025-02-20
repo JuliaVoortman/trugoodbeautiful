@@ -47,27 +47,27 @@ const Sources = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-4 space-y-8">
-    <div className="bg-white rounded-xl shadow-sm p-8">
-      <h1 className="text-xl font-medium text-slate-700 mb-6">
-        Our sources
-      </h1>
-      
+ <div className="max-w-4xl mx-auto px-4 py-4 space-y-8">
+      <div className="bg-white rounded-xl shadow-sm p-8">
+        <h1 className="text-xl font-medium text-slate-700 mb-6">
+         Our sources
+        </h1>
+        
         
         <div className="overflow-x-auto">
         <table className="w-full divide-y divide-slate-200 border border-slate-200 rounded-lg table-fixed">
         <thead>
   <tr className="bg-stone-50">
-    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider text-slate-500 w-[15%]">
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
       Source
     </th>
-    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider text-slate-500 w-[45%]">
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[45%] font-normal">
       Description
     </th>
-    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider text-slate-500 w-[15%]">
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
       Score
     </th>
-    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wider text-slate-500 w-[25%]">
+    <th className="px-2 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[25%] font-normal">
       <a href="https://www.allsides.com/media-bias/ratings" className="underline">AllSides</a> rating
     </th>
   </tr>

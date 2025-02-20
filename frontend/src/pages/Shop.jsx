@@ -52,7 +52,7 @@ const Shop = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map(product => (
-         <div key={product.id} className="bg-stone-50 rounded-lg overflow-hidden flex flex-col">
+         <div key={product.id} className="bg-slate-50 rounded-lg overflow-hidden flex flex-col">
          <div className="aspect-w-3 aspect-h-2">
            <img 
              src={product.image}
@@ -61,21 +61,14 @@ const Shop = () => {
            />
          </div>
          <div className="p-6 flex-1 flex flex-col">
-  <h2 className="text-lg font-medium text-slate-800 mb-2">
+  <h2 className="text-lg text-stone-800 mb-2">
     {product.name}
   </h2>
   
   <div className="flex items-center justify-between mb-4">
-    <span className="text-xl font-medium text-slate-900">
+    <span className="text-xl font-medium text-stone-900">
       ${product.price}
     </span>
-    <button 
-      className="px-4 py-2 bg-green-600 text-white rounded-lg 
-        hover:bg-green-700 transition-colors duration-50 
-        font-medium shadow-sm hover:shadow-md text-sm"
-    >
-      Add to Cart
-    </button>
   </div>
 
   <p className="text-slate-600 mb-4 text-sm flex-1">
@@ -83,7 +76,7 @@ const Shop = () => {
   </p>
 
   <div className="mt-4 pt-4 border-t border-stone-200">
-    <h3 className="font-medium text-slate-700 mb-2 text-sm">
+    <h3 className="text-slate-700 mb-2 text-sm">
       Product Details
     </h3>
     <ul className="space-y-1 text-slate-600 text-xs">
@@ -93,6 +86,13 @@ const Shop = () => {
     </ul>
   </div>
 </div>
+<button 
+      className="m-4 px-4 py-2 bg-yellow-600 text-white rounded-lg 
+        hover:bg-green-600 transition-colors duration-50 
+        shadow-sm hover:shadow-md text-sm"
+    >
+      Add to Cart
+    </button>
             </div>
           ))}
         </div>

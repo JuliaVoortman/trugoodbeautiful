@@ -22,13 +22,13 @@ const StorySentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
   };
 
   return (
-    <div className="-mt-16 flex justify-start px-4 sm:px-6 py-4 border-b border-slate-200">
+    <div className="-mt-16 flex justify-start px-4 sm:px-6 py-4 border-slate-200 relative z-[50]">
       {sentiments.map((sentiment) => (
         <button
           key={sentiment.id}
           onClick={() => handleSentimentClick(sentiment.id)}
           className={`
-            px-6 py-2.5 rounded-lg text-sm transition-all duration-150 mr-4
+            px-6 py-2.5 rounded-lg text-sm transition-all duration-50 mr-4
             shadow-sm 
             ${selectedSentiment === sentiment.id
               ? `${sentiment.color} text-white`

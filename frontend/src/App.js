@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
@@ -26,10 +26,31 @@ const App = () => {
   const { stories, loading: storiesLoading, error: storiesError } = useStories();
   const [storySelectedSentiment, setStorySelectedSentiment] = useState('positive');
 
+  // Debug logging for stories data
+  useEffect(() => {
+    console.log('Stories Data:', {
+      totalStories: stories?.length,
+      sentiments: stories?.map(story => story?.fields?.sentimentType?.fields?.title),
+      selectedSentiment: storySelectedSentiment
+    });
+  }, [stories, storySelectedSentiment]);
+
   // Filter stories based on sentiment
   const filteredStories = stories?.filter(story => {
     const sentiment = story?.fields?.sentimentType?.fields?.title;
-    return storySelectedSentiment === 'positive' 
+    
+    console.log('Filtering story:', {
+      id: story?.sys?.id,
+      title: story?.fields?.title,
+      sentiment,
+      selectedSentiment: storySelectedSentiment,
+      isPositive: sentiment === 'Positive',
+      isOther: ['Neutral', 'Negative'].includes(sentiment)
+    });
+
+    if (!sentiment) return false;
+
+    return storySelectedSentiment === 'positive'
       ? sentiment === 'Positive'
       : ['Neutral', 'Negative'].includes(sentiment);
   }) || [];
@@ -37,10 +58,32 @@ const App = () => {
   // Filter articles based on sentiment
   const filteredArticles = articles?.filter(article => {
     const sentiment = article?.fields?.sentimentType?.fields?.title;
-    return selectedSentiment === 'positive' 
+    
+    console.log('Filtering article:', {
+      id: article?.sys?.id,
+      title: article?.fields?.title,
+      sentiment,
+      selectedSentiment,
+      isPositive: sentiment === 'Positive',
+      isOther: ['Neutral', 'Negative'].includes(sentiment)
+    });
+
+    if (!sentiment) return false;
+
+    return selectedSentiment === 'positive'
       ? sentiment === 'Positive'
       : ['Neutral', 'Negative'].includes(sentiment);
   }) || [];
+
+  // Debug logging for filtered results
+  useEffect(() => {
+    console.log('Filtered Results:', {
+      totalStories: stories?.length,
+      filteredStories: filteredStories.length,
+      totalArticles: articles?.length,
+      filteredArticles: filteredArticles.length
+    });
+  }, [stories, articles, filteredStories, filteredArticles]);
 
   if (articlesLoading || storiesLoading) {
     return (

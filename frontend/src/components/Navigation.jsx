@@ -15,29 +15,31 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex justify-end gap-2 sm:gap-8">
           {navItems.map(({ path, label, exact }) => (
-       <NavLink 
-       key={path}
-       to={path}
-       end={exact}
-       className={({ isActive }) => `
-         relative text-[14px] sm:text-[16px] !text-white 
-         sm:hover:!text-green-500/90 transition-colors
-         border sm:border-0 border-white/30 rounded-md sm:rounded-none
-         py-1 px-2.5 sm:px-0
-         sm:underline sm:underline-offset-[3px] sm:decoration-white/60 sm:decoration-[0.5px]
-         ${isActive ? 'bg-green-600 sm:bg-transparent border-green-600 sm:border-0 sm:!text-green-500' : ''}
-         ${isActive ? `
-           sm:before:absolute sm:before:left-[-12px] sm:before:top-1/2 sm:before:-translate-y-1/2 
-           sm:before:w-1.5 sm:before:h-1.5 sm:before:bg-green-600 sm:before:rounded-full
-           sm:before:content-['']
-         ` : ''}
-       `}
+            <NavLink 
+              key={path}
+              to={path}
+              end={exact}
+              className={({ isActive }) => `
+                relative text-[14px] sm:text-[16px] !text-white 
+                transition-colors duration-150
+                sm:border-0 border-white/30 rounded-md sm:rounded-none
+                py-1 px-2.5 sm:px-0
+                sm:underline sm:underline-offset-[3px] sm:decoration-[0.8px]
+                hover:sm:!text-green-500/90 hover:sm:decoration-green-500/90
+                ${isActive 
+                  ? 'bg-green-600 sm:bg-transparent border-green-600 sm:border-0 sm:!text-green-500 sm:decoration-green-500' 
+                  : ''
+                }
+                ${isActive ? `
+                  sm:before:absolute sm:before:left-[-12px] sm:before:top-1/2 sm:before:-translate-y-1/2 
+                  sm:before:w-1.5 sm:before:h-1.5 sm:before:bg-green-600 sm:before:rounded-full
+                  sm:before:content-['']
+                ` : ''}
+              `}
             >
-              {({ isActive }) => (
-                <div className="relative whitespace-nowrap">
-                  {label}
-                </div>
-              )}
+              <div className="relative whitespace-nowrap">
+                {label}
+              </div>
             </NavLink>
           ))}
         </div>

@@ -5,17 +5,16 @@ import StoryCard from './StoryCard';
 import FeaturedStory from './FeaturedStory';
 
 const StoryDisplay = ({ stories, selectedSentiment }) => {
-  // Debug logging for incoming props
-  console.log('StoryDisplay Component Debug:', {
-    storiesCount: stories?.length,
-    selectedSentiment,
-    firstStory: stories?.[0]
-  });
-
-  const [displayCount, setDisplayCount] = useState(3);
-  const [displayedStories, setDisplayedStories] = useState([]);
-  const [featuredStory, setFeaturedStory] = useState(null);
-  const [selectedDate, setSelectedDate] = useState('all');
+    console.log('StoryDisplay Component Debug:', {
+      storiesCount: stories?.length,
+      selectedSentiment,
+      firstStory: stories?.[0]
+    });
+  
+    const [displayCount, setDisplayCount] = useState(3);
+    const [displayedStories, setDisplayedStories] = useState([]);
+    const [featuredStory, setFeaturedStory] = useState(null);
+    const [selectedDate, setSelectedDate] = useState('all');
 
   // Helper function for date formatting
   const getRelativeDateString = (daysAgo) => {
@@ -67,19 +66,26 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
 
   // Handle initial load and date filtering
   useEffect(() => {
+    // Only process if we have stories
     if (stories?.length > 0) {
-      const filteredStories = filterStoriesByDate(stories);
+      const dateFilteredStories = filterStoriesByDate(stories);
       
-      if (filteredStories?.length > 0) {
-        const featured = filteredStories[0];
-        setFeaturedStory(featured);
+      if (dateFilteredStories?.length > 0) {
+        // Set featured story to first story after date filtering
+        setFeaturedStory(dateFilteredStories[0]);
         
-        const remaining = filteredStories.slice(1, displayCount + 1);
+        // Set remaining stories for display
+        const remaining = dateFilteredStories.slice(1, displayCount + 1);
         setDisplayedStories(remaining);
       } else {
+        // Clear everything if no stories match the date filter
         setFeaturedStory(null);
         setDisplayedStories([]);
       }
+    } else {
+      // Clear everything if no stories are provided
+      setFeaturedStory(null);
+      setDisplayedStories([]);
     }
   }, [stories, selectedDate, filterStoriesByDate, displayCount]);
 

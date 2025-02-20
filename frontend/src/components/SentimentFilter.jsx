@@ -22,7 +22,7 @@ const SentimentFilter = ({ selectedSentiment, setSelectedSentiment }) => {
   };
 
   return (
-    <div className="-mt-16 flex justify-start px-4 sm:px-6 py-4 border-b border-slate-200">
+    <div className="-mt-16 flex justify-start px-4 sm:px-6 py-4 border-slate-200 relative z-[50]">
       {sentiments.map((sentiment) => (
         <button
           key={sentiment.id}

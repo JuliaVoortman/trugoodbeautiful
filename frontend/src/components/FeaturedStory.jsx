@@ -43,7 +43,7 @@ const FeaturedStory = ({ story }) => (
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 20 20" 
               fill="currentColor" 
-              className="w-3.5 h-3.5 group-hover:text-green-600 transition-colors duration-150"
+              className="w-3.5 h-3.5 group-hover:text-green-600 transition-colors duration-50"
             >
               <path 
                 fillRule="evenodd" 
