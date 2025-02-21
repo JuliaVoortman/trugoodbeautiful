@@ -13,14 +13,12 @@ import {
   ChevronDownIcon,
   UserIcon,           // Added
   ChatBubbleLeftIcon, // Added
-  TrophyIcon,         // Added
+  TrophyIcon,          // Added
   ChevronUpIcon
 } from '@heroicons/react/24/outline';
 
 const StoryModal = ({ isOpen, onClose, story }) => {
-  const [activeEntity, setActiveEntity] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
-  const [isFullTextExpanded, setIsFullTextExpanded] = useState(false);
   const [isSummaryExpanded, setIsSummaryExpanded] = useState(false);
   const [isCommentsExpanded, setIsCommentsExpanded] = useState(false);
   const navigate = useNavigate();
