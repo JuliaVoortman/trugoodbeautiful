@@ -11,6 +11,9 @@ import {
   NewspaperIcon,
   LightBulbIcon,
   ChevronDownIcon,
+  UserIcon,           // Added
+  ChatBubbleLeftIcon, // Added
+  TrophyIcon,         // Added
   ChevronUpIcon
 } from '@heroicons/react/24/outline';
 
