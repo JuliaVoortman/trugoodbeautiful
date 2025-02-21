@@ -6,7 +6,6 @@ const Navigation = () => {
     { path: '/', label: 'Stories' },
     { path: '/articles', label: 'Articles', exact: true },
     { path: '/how-it-works', label: 'How it works' },
-    { path: '/sources', label: 'Sources' },
     { path: '/shop', label: 'Shop' }
   ];
 

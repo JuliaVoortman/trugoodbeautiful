@@ -57,16 +57,16 @@ const Sources = () => {
           <table className="w-full divide-y divide-slate-200 border border-slate-200 rounded-lg table-fixed overflow-hidden">
             <thead>
               <tr className="bg-stone-50">
-                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-lg uppercase tracking-wide text-slate-500 w-[15%] font-normal">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
                   Source
                 </th>
-                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-lg uppercase tracking-wide text-slate-500 w-[45%] font-normal">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[45%] font-normal">
                   Description
                 </th>
-                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-lg uppercase tracking-wide text-slate-500 w-[15%] font-normal">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
                   Score
                 </th>
-                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-lg uppercase tracking-wide text-slate-500 w-[25%] font-normal">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[25%] font-normal">
                   <a href="https://www.allsides.com/media-bias/ratings" className="underline hover:text-green-600 transition-colors">
                     AllSides
                   </a> rating

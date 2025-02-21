@@ -94,31 +94,36 @@ const HowItWorks = () => {
       </div>
 
       {/* Sources Table Section */}
-      <div className="bg-white rounded-xl shadow-sm p-4 sm:p-8">
-        <h2 className="text-xl font-medium text-slate-700 mb-6">Our Sources</h2>
+       <div className="max-w-7xl lg:max-w-4xl mx-auto px-2 sm:px-3 md:px-4 py-4 space-y-8">
+      <div className="bg-white rounded-xl shadow-sm p-4 md:p-8">
+        <h1 className="text-xl font-medium text-slate-700 mb-6">
+          Our sources
+        </h1>
         
-        <div className="overflow-x-auto">
-          <table className="w-full divide-y divide-slate-200 border border-slate-200 rounded-lg table-fixed">
+        <div className="overflow-x-auto rounded-lg">
+          <table className="w-full divide-y divide-slate-200 border border-slate-200 rounded-lg table-fixed overflow-hidden">
             <thead>
               <tr className="bg-stone-50">
-                <th className="px-2 py-3 text-left text-[10px] sm:text-xs uppercase tracking-wider font-medium text-slate-500 w-[15%]">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
                   Source
                 </th>
-                <th className="px-2 py-3 text-left text-[10px] sm:text-xs uppercase tracking-wider font-medium text-slate-500 w-[45%]">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[45%] font-normal">
                   Description
                 </th>
-                <th className="px-2 py-3 text-left text-[10px] sm:text-xs uppercase tracking-wider font-medium text-slate-500 w-[15%]">
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[15%] font-normal">
                   Score
                 </th>
-                <th className="px-2 py-3 text-left text-[10px] sm:text-xs uppercase tracking-wider font-medium text-slate-500 w-[25%]">
-                  <a href="https://www.allsides.com/media-bias/ratings" className="underline">AllSides</a> rating
+                <th className="px-2 sm:px-3 py-3 text-left text-[10px] sm:text-sm uppercase tracking-wide text-slate-500 w-[25%] font-normal">
+                  <a href="https://www.allsides.com/media-bias/ratings" className="underline hover:text-green-600 transition-colors">
+                    AllSides
+                  </a> rating
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 bg-white">
               {sources.map((source) => (
-                <tr key={source.sys.id} className="hover:bg-blue-600/10 transition-colors duration-50">
-                  <td className="px-2 py-4 align-middle">
+                <tr key={source.sys.id} className="hover:bg-blue-600/10 transition-colors duration-150">
+                  <td className="px-2 sm:px-3 py-4 align-middle">
                     <div className="flex items-center justify-center">
                       {source.fields.logo && (
                         <img 
@@ -129,30 +134,34 @@ const HowItWorks = () => {
                       )}
                     </div>
                   </td>
-                  <td className="px-2 py-4 align-middle">
+                  <td className="px-2 sm:px-3 py-4 align-middle">
                     <div className="flex flex-col">
                       <a 
                         href={source.fields.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-slate-900 hover:text-green-600 transition-colors duration-150 font-medium text-sm sm:text-lg"
+                        className="text-slate-900 hover:text-green-600 transition-colors duration-150 font-medium text-sm sm:text-base md:text-lg"
                       >
                         {source.fields.name}
                       </a>
-                      <p className="text-xs sm:text-base text-slate-600 mt-1 line-clamp-2">
+                      <p className="text-sm md:text-base text-slate-600 mt-1 line-clamp-8">
                         {source.fields.description}
                       </p>
                     </div>
                   </td>
-                  <td className="px-2 py-4 align-middle">
-                    <span className="text-slate-600 text-sm sm:text-lg">
-                      {source.fields.score}
-                    </span>
+                  <td className="px-2 sm:px-3 py-4">
+                    <div className="flex items-center justify-start h-full">
+                      <span className="text-slate-600 text-sm sm:text-base md:text-lg">
+                        {source.fields.score}
+                      </span>
+                    </div>
                   </td>
-                  <td className="px-2 py-4 align-middle">
-                    <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs sm:text-base font-medium bg-stone-50 text-slate-800 whitespace-nowrap">
-                      {source.fields.biasRating?.fields?.title || 'Unknown'}
-                    </span>
+                  <td className="px-2 sm:px-3 py-4">
+                    <div className="flex items-center h-full">
+                      <span className="inline-flex items-center px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm md:text-base font-medium bg-stone-50 text-slate-800 whitespace-nowrap">
+                        {source.fields.biasRating?.fields?.title || 'Unknown'}
+                      </span>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -160,6 +169,7 @@ const HowItWorks = () => {
           </table>
         </div>
       </div>
+    </div>
     </div>
   );
 };

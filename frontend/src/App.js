@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Loader from './components/Loader';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
@@ -91,12 +92,9 @@ const App = () => {
   }, [stories, articles, filteredStories, filteredArticles]);
 
   if (articlesLoading || storiesLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg text-slate-600">Loading stories of progress...</div>
-      </div>
-    );
+    return <Loader message="Loading stories of progress..." />;
   }
+  
 
   if (articlesError || storiesError) {
     return (

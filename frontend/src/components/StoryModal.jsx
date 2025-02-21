@@ -14,7 +14,9 @@ import {
   UserIcon,           // Added
   ChatBubbleLeftIcon, // Added
   TrophyIcon,          // Added
-  ChevronUpIcon
+  ChevronUpIcon,
+  LockClosedIcon,
+  ArrowRightIcon
 } from '@heroicons/react/24/outline';
 
 const StoryModal = ({ isOpen, onClose, story }) => {
@@ -212,14 +214,42 @@ const StoryModal = ({ isOpen, onClose, story }) => {
       
       <div className={`relative ${!isCommentsExpanded && 'max-h-[300px] overflow-hidden'}`}>
         <div className="p-4 space-y-4">
-          {/* Comment Input */}
-          <div className="flex gap-3">
-            <div className="w-8 h-8 rounded-full bg-slate-200"></div>
-            <textarea
-              placeholder="Add your thoughts..."
-              className="flex-1 min-h-[80px] p-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
-            />
-          </div>
+          {/* Comment Input - Locked State */}
+<div className="flex gap-3">
+  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center">
+    <UserIcon className="w-5 h-5 text-slate-400" />
+  </div>
+  <div className="flex-1 relative">
+    <div className="absolute inset-0 bg-slate-50 rounded-lg flex items-center justify-center z-10">
+      <button 
+        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+        onClick={() => navigate('/login')}
+      >
+        Get Verified to Comment
+        <LockClosedIcon className="w-4 h-4" />
+      </button>
+    </div>
+    <textarea
+      disabled
+      placeholder="Add your thoughts..."
+      className="flex-1 w-full min-h-[80px] p-3 rounded-lg border border-slate-200 bg-slate-50 text-slate-400 resize-none"
+    />
+  </div>
+</div>
+
+{/* Comment Count */}
+<div className="flex items-center justify-between py-2 border-b border-slate-100">
+  <span className="text-sm text-slate-500">
+    {story.fields?.comments?.length || 0} Comments
+  </span>
+  <button 
+    className="text-sm text-slate-600 hover:text-slate-900 flex items-center gap-1"
+    onClick={() => navigate('/login')}
+  >
+    Sign in to comment
+    <ArrowRightIcon className="w-4 h-4" />
+  </button>
+</div>
 
           {/* Example Comments - Replace with actual comments data */}
           <div className="pt-4 space-y-4">
