@@ -4,6 +4,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import SingleStoryView from './components/SingleStoryView';
 import useArticles from './hooks/useArticles';
 import useStories from './hooks/useStories';
 import './App.css';
@@ -115,17 +116,27 @@ const App = () => {
         <Hero />
 
         <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                <Stories 
-                  selectedSentiment={storySelectedSentiment}
-                  setSelectedSentiment={setStorySelectedSentiment}
-                  filteredStories={filteredStories}
-                />
-              } 
-            />
+        <Routes>
+  <Route 
+    path="/" 
+    element={
+      <Stories 
+        selectedSentiment={storySelectedSentiment}
+        setSelectedSentiment={setStorySelectedSentiment}
+        filteredStories={filteredStories}
+      />
+    } 
+  />
+  <Route 
+    path="/stories/:slug" 
+    element={
+      <SingleStoryView 
+        stories={stories}
+        selectedSentiment={storySelectedSentiment}
+        setSelectedSentiment={setStorySelectedSentiment}
+      />
+    } 
+  />
             <Route 
               path="/articles" 
               element={
@@ -141,6 +152,7 @@ const App = () => {
             <Route path="/sources" element={<Sources />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/stories/:slug" element={<Stories stories={stories} />} />
           </Routes>
         </main>
 

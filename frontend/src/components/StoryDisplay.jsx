@@ -221,7 +221,7 @@ const StoryDisplay = ({ stories, selectedSentiment }) => {
       </div>
 
       {featuredStory && (
-        <div className="pt-2 pb-20">
+        <div className="pt-2 pb-10">
           <FeaturedStory story={featuredStory} />
         </div>
       )}

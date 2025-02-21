@@ -214,13 +214,14 @@ const ArticleDisplay = ({ articles, selectedSentiment }) => {
         </Menu>
       </div>
 
+   
       {featuredArticle && (
-        <div className="pt-2 pb-20">
+        <div className="pt-2 pb-20 sm:pb-20">
           <FeaturedArticle article={featuredArticle} />
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-10 sm:pt-0">
         {displayedArticles.map((article) => (
           <ArticleCard 
             key={article.sys.id} 
