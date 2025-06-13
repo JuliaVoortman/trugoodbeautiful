@@ -9,6 +9,9 @@ import SingleStoryView from './components/SingleStoryView';
 import useArticles from './hooks/useArticles';
 import useStories from './hooks/useStories';
 import './App.css';
+import ReactGA from 'react-ga4'; 
+
+ReactGA.initialize('G-DW840JQ300');
 
 // Import page components
 import Stories from './pages/Stories';

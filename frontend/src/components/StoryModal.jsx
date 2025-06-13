@@ -62,33 +62,40 @@ const StoryModal = ({ isOpen, onClose, story }) => {
       <div className="fixed inset-0">
         <Dialog.Panel className="w-full h-full bg-white">
           <div className="h-full overflow-y-auto">
-            {/* Header - Just close button */}
-            <div className="sticky top-0 bg-white px-4 sm:px-6 py-4 border-b border-slate-200 flex justify-between items-center z-10">
+          
+{/* Header with green background */}
+<div className="sticky top-0 bg-green-600 px-4 sm:px-6 py-4 border-b border-green-500 flex justify-between items-center z-10">
   {/* User Profile Actions */}
   <div className="flex items-center gap-6">
     <div className="flex items-center gap-2">
-      <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center">
-        <UserIcon className="w-5 h-5 text-slate-500" />
+      <div className="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center">
+        <UserIcon className="w-5 h-5 text-white" />
       </div>
       <div className="hidden sm:block">
-        <a href="/login" className="text-sm text-slate-600 hover:text-slate-900">Sign in</a>
-      </div>
+  <button 
+    onClick={() => navigate('/login')} 
+    className="text-sm text-white hover:text-green-50 transition-colors"
+  >
+    Sign in
+  </button>
+</div>
+
     </div>
     <nav className="hidden sm:flex items-center gap-6">
-      <button className="text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+      <button className="text-sm text-white hover:text-green-50 flex items-center gap-2">
         <BookmarkIcon className="w-4 h-4" />
         <span>My Bookmarks</span>
-        <span className="ml-1 px-2 py-0.5 text-xs bg-slate-100 rounded-full">0</span>
+        <span className="ml-1 px-2 py-0.5 text-xs bg-green-500 rounded text-white">0</span>
       </button>
-      <button className="text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+      <button className="text-sm text-white hover:text-green-50 flex items-center gap-2">
         <ChatBubbleLeftIcon className="w-4 h-4" />
         <span>My Comments</span>
-        <span className="ml-1 px-2 py-0.5 text-xs bg-slate-100 rounded-full">0</span>
+        <span className="ml-1 px-2 py-0.5 text-xs bg-green-500 rounded text-white">0</span>
       </button>
-      <button className="text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+      <button className="text-sm text-white hover:text-green-50 flex items-center gap-2">
         <TrophyIcon className="w-4 h-4" />
         <span>My Points</span>
-        <span className="ml-1 px-2 py-0.5 text-xs bg-green-100 text-green-800 rounded-full">0</span>
+        <span className="ml-1 px-2 py-0.5 text-xs bg-green-500 rounded text-white">0</span>
       </button>
     </nav>
   </div>
@@ -96,13 +103,12 @@ const StoryModal = ({ isOpen, onClose, story }) => {
   {/* Close Button */}
   <button
     onClick={handleClose}
-    className="p-2 hover:bg-slate-100 rounded-full transition-colors border-2 border-slate-200"
+    className="p-2 hover:bg-green-500 rounded-lg transition-colors border-2 border-green-500"
     aria-label="Close modal"
   >
-    <XMarkIcon className="w-5 h-5 text-slate-500" />
+    <XMarkIcon className="w-5 h-5 text-white" />
   </button>
 </div>
-
             {/* Main Content */}
             <div className="px-4 sm:px-6 py-6 max-w-7xl mx-auto">
               {/* Top Section - Two Columns */}
