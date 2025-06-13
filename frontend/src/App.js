@@ -13,6 +13,10 @@ import ReactGA from 'react-ga4';
 
 ReactGA.initialize('G-DW840JQ300');
 
+useEffect(() => {
+  ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+}, []);
+
 // Import page components
 import Stories from './pages/Stories';
 import Articles from './pages/Articles';
