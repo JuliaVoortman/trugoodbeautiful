@@ -1,23 +1,20 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ReactGA from 'react-ga4';
+
+// Import components
 import Loader from './components/Loader';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import SingleStoryView from './components/SingleStoryView';
+
+// Import hooks
 import useArticles from './hooks/useArticles';
 import useStories from './hooks/useStories';
-import './App.css';
-import ReactGA from 'react-ga4'; 
 
-ReactGA.initialize('G-DW840JQ300');
-
-useEffect(() => {
-  ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-}, []);
-
-// Import page components
+// Import pages
 import Stories from './pages/Stories';
 import Articles from './pages/Articles';
 import HowItWorks from './pages/HowItWorks';
@@ -26,7 +23,17 @@ import Shop from './pages/Shop';
 import Sources from './pages/Sources';
 import Contact from './pages/Contact';
 
+import './App.css';
+
+// Initialize ReactGA
+ReactGA.initialize('G-DW840JQ300');
+
 const App = () => {
+  // Track pageviews
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
+
   // Articles state and data
   const { articles, loading: articlesLoading, error: articlesError } = useArticles();
   const [selectedSentiment, setSelectedSentiment] = useState('positive');
